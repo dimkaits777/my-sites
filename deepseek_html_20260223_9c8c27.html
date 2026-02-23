@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>3D SVG Flower Collection · creative marketplace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #111;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* large header — exactly as requested */
+        h1 {
+            font-size: clamp(2.4rem, 8vw, 4rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            line-height: 1.1;
+            color: #1e1e1e;
+            border-left: 6px solid #e60023;
+            padding-left: 1.2rem;
+        }
+
+        /* responsive grid — neat, clean, adaptive */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem 1.8rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* image link — no borders, no outlines */
+        .image-link {
+            display: block;
+            width: 100%;
+            background: #f8f8f8;
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            line-height: 0;
+        }
+
+        .image-link img {
+            display: block;
+            width: 100%;
+            height: 200px;           /* fixed height as required */
+            object-fit: cover;        /* crop uniformly */
+            background: #f0f0f0;
+            border: none;
+            outline: none;
+        }
+
+        .card-content {
+            padding: 1.4rem 1.2rem 1.6rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 550;
+            margin-bottom: 0.65rem;
+            line-height: 1.3;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        .description {
+            color: #3d3d3d;
+            font-size: 0.95rem;
+            margin-bottom: 1.4rem;
+            flex: 1;
+            /* limit text to ~6 lines, keep cards consistent */
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* button — exact red, white, rounded */
+        .btn-affiliate {
+            display: inline-block;
+            background-color: #e60023;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            text-align: center;
+            letter-spacing: 0.3px;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(230, 0, 35, 0.15);
+            align-self: flex-start;
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        .btn-affiliate:hover {
+            background-color: #b8001c;
+            box-shadow: 0 6px 12px rgba(230, 0, 35, 0.25);
+            color: white;
+        }
+
+        .card a {
+            text-decoration: none;
+        }
+
+        /* focus accessibility */
+        .btn-affiliate:focus-visible,
+        .image-link:focus-visible {
+            outline: 2px solid #e60023;
+            outline-offset: 2px;
+        }
+
+        /* mobile fine-tuning */
+        @media (max-width: 580px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+                padding-left: 1rem;
+                border-left-width: 5px;
+                margin-bottom: 1.8rem;
+            }
+            .card-content {
+                padding: 1.2rem 1rem 1.4rem;
+            }
+            .btn-affiliate {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- main header as required -->
+        <h1>3D SVG Flower Collection</h1>
+
+        <!-- grid will be populated by JavaScript from the product data -->
+        <div id="product-grid" class="product-grid"></div>
+    </div>
+
+    <script>
+        (function() {
+            // --------------------------------------------------------------
+            // PRODUCT DATA (exactly as provided, 49 items)
+            // all strings use backticks to avoid escaping quotes
+            // --------------------------------------------------------------
+            const products = [
+                {
+                    name: `School Counselor Career T`,
+                    description: `Click here and download the School Counselor Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/12/School-Counselor-Career-Tshirt-Graphics-117870411-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/school-counselor-career-t-shirt/ref/20531415/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Autism Ribbon T`,
+                    description: `Click here and download the Autism Ribbon T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/03/Autism-Ribbon-Tshirt-Graphics-117193496-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/autism-ribbon-t-shirt/ref/20531416/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mental Health Awareness T`,
+                    description: `Click here and download the Mental Health Awareness T-Shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/27/Mental-Health-Awareness-TShirt-Graphics-118890239-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mental-health-awareness-t-shirt-54/ref/20531417/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Happy Thanksgiving Tag`,
+                    description: `Click here and download the Happy Thanksgiving Tag | Fall | Wreath graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2021/10/04/Happy-Thanksgiving-Tag-Fall-Wreath-Graphics-18278189-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/happy-thanksgiving-tag-fall-wreath/ref/20531418/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Boots Bows Gender Reveal T`,
+                    description: `Click here and download the Boots Bows Gender Reveal T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/22/Boots-Bows-Gender-Reveal-TShirt-PNG-SVG-Graphics-122621678-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/boots-bows-gender-reveal-t-shirt-png-svg/ref/20531419/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Black Girl Magic Print File Sublimation Graphic by Duron B Cartoons · Creative Fabrica`,
+                    description: `Click here and download the Black Girl Magic Print File Sublimation graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2022/05/18/Black-Girl-Magic-Print-File-Sublimation-Graphics-30769736-1.png`,
+                    affiliate_url: `https://www.creativefabrica.com/product/black-girl-magic-print-file-sublimation/ref/20531420/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `I'm Here Gender Reveal T`,
+                    description: `Click here and download the I'm Here Gender Reveal T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/22/Im-Here-Gender-Reveal-TShirt-PNG-SVG-Graphics-122614708-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/im-here-gender-reveal-t-shirt-png-svg/ref/20531421/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Happy Women's Day Gift Tag Embroidery Design · Creative Fabrica`,
+                    description: `Click here and download the Happy Women's Day Gift Tag Embroidery Design · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/07/08/Happy-Womens-Day-Gift-Tag-Embroidery-Design-Embroidery-125736968-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/happy-womens-day-gift-tag-embroidery-design/ref/20531422/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Aviator Pilot Airplane Aviation Graphic by AmazonDesign · Creative Fabrica`,
+                    description: `Click here and download the Aviator Pilot Airplane Aviation graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/12/09/Aviator-Pilot-Airplane-Aviation-Graphics-111621077-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/aviator-pilot-airplane-aviation-40/ref/20531423/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `I'm a Proud Autism Cousin T`,
+                    description: `Click here and download the I'm a Proud Autism Cousin T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/04/Im-A-Proud-Autism-Cousin-Tshirt-Graphics-117280240-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/im-a-proud-autism-cousin-t-shirt/ref/20531424/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `I Want to Leave Sarcastic T`,
+                    description: `Click here and download the I Want to Leave Sarcastic T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/02/03/I-Want-To-Leave-Sarcastic-Tshirt-Graphics-115246350-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/i-want-to-leave-sarcastic-t-shirt/ref/20531425/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Graduation Girl SVG, Messy Bun Svg Graphic by FusionArtMedia · Creative Fabrica`,
+                    description: `Click here and download the Graduation Girl SVG, Messy Bun Svg graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2026/01/13/Graduation-Girl-SVG-Messy-bun-svg-Graphics-139970399-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/graduation-girl-svg-messy-bun-svg-2/ref/20531426/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `School Counselor Career T`,
+                    description: `Click here and download the School Counselor Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/12/School-Counselor-Career-Tshirt-Graphics-117871394-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/school-counselor-career-t-shirt-2/ref/20531427/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Women’s Day T`,
+                    description: `Click here and download the Women’s Day T-shirt Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/01/04/Womens-Day-Tshirt-Design-Graphics-113174817-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/womens-day-t-shirt-design-139/ref/20531428/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Just a Girl Chicken T`,
+                    description: `Click here and download the Just a Girl Chicken T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/24/Just-A-Girl-Chicken-TShirt-PNG-SVG-Graphics-122746737-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/just-a-girl-chicken-t-shirt-png-svg/ref/20531429/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Happy Women's Day Graphic by Graphic Forests · Creative Fabrica`,
+                    description: `Click here and download the Happy Women's Day graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2022/03/13/happy-womens-day-Graphics-27088866-1.png`,
+                    affiliate_url: `https://www.creativefabrica.com/product/happy-womens-day-107/ref/20531430/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Female Weightlifting SVG, Girl Gym SVG Graphic by BlackCatArea · Creative Fabrica`,
+                    description: `Click here and download the Female Weightlifting SVG, Girl Gym SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/11/11/Female-Weightlifting-SVG-Girl-Gym-SVG-Graphics-135243602-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/female-weightlifting-svg-girl-gym-svg-11/ref/20531431/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Grandma Gender Reveal T`,
+                    description: `Click here and download the Grandma Gender Reveal T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/22/Grandma-Gender-Reveal-TShirt-PNG-SVG-Graphics-122639414-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/grandma-gender-reveal-t-shirt-png-svg-7/ref/20531432/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Big Bro Gender Reveal T`,
+                    description: `Click here and download the Big Bro Gender Reveal T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/22/Big-Bro-Gender-Reveal-TShirt-PNG-SVG-Graphics-122637511-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/big-bro-gender-reveal-t-shirt-png-svg/ref/20531433/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mental Health Awareness T`,
+                    description: `Click here and download the Mental Health Awareness T-Shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/27/Mental-Health-Awareness-TShirt-Graphics-118899928-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mental-health-awareness-t-shirt-105/ref/20531434/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Christmas Elf Girl Clipart PNG Design Graphic by Cut File · Creative Fabrica`,
+                    description: `Click here and download the Christmas Elf Girl Clipart PNG Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/11/25/Christmas-Elf-Girl-Clipart-PNG-Design-Graphics-110563113-1.png`,
+                    affiliate_url: `https://www.creativefabrica.com/product/christmas-elf-girl-clipart-png-design/ref/20531435/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Happy Valentine’s Day T`,
+                    description: `Click here and download the Happy Valentine’s Day T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/01/09/Happy-Valentines-Day-Tshirt-Graphics-113502837-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/happy-valentines-day-t-shirt-38/ref/20531436/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mental Health Awareness T`,
+                    description: `Click here and download the Mental Health Awareness T-Shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/27/Mental-Health-Awareness-TShirt-Graphics-118900271-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mental-health-awareness-t-shirt-114/ref/20531437/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Coquette Inspired Christmas PNG Design Graphic by SvgDesignStudio · Creative Fabrica`,
+                    description: `Click here and download the Coquette Inspired Christmas PNG Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/11/06/Coquette-Inspired-Christmas-PNG-Design-Graphics-134916738-1.png`,
+                    affiliate_url: `https://www.creativefabrica.com/product/coquette-inspired-christmas-png-design/ref/20531438/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Funny Soccer T Shirt Dabbing Eagle Graphic by N Creation · Creative Fabrica`,
+                    description: `Click here and download the Funny Soccer T Shirt Dabbing Eagle graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/20/Funny-Soccer-T-Shirt-Dabbing-Eagle-Graphics-118416174-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/funny-soccer-t-shirt-dabbing-eagle/ref/20531439/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Girl Cinco De Mayo T Shirt Design Graphic by TrendyPointShop · Creative Fabrica`,
+                    description: `Click here and download the Girl Cinco De Mayo T Shirt Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2022/03/16/Girl-Cinco-De-Mayo-t-shirt-design-Graphics-27264788-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/girl-cinco-de-mayo-t-shirt-design/ref/20531440/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mom CEO of the House Career T`,
+                    description: `Click here and download the Mom CEO of the House Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/12/Mom-CEO-Of-The-House-Career-Tshirt-Graphics-117864242-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mom-ceo-of-the-house-career-t-shirt/ref/20531441/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Editable Christmas Treat Cards for Kids Graphic by Charmed Pixels Studio · Creative Fabrica`,
+                    description: `Click here and download the Editable Christmas Treat Cards for Kids graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/11/29/Editable-Christmas-Treat-Cards-for-Kids-Graphics-136645637-1-1.png`,
+                    affiliate_url: `https://www.creativefabrica.com/product/editable-christmas-treat-cards-for-kids/ref/20531442/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Girl Holding Mug Mockups Bundle 1 Graphic by Mockup And Design Store · Creative Fabrica`,
+                    description: `Click here and download the Girl Holding Mug Mockups Bundle 1 graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/03/29/Girl-Holding-Mug-Mockups-Bundle-1-Graphics-94403379-1.jpeg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/girl-holding-mug-mockups-bundle-1/ref/20531443/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mixed Gender Reveal T`,
+                    description: `Click here and download the Mixed Gender Reveal T-Shirt PNG SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/05/22/Mixed-Gender-Reveal-TShirt-PNG-SVG-Graphics-122614311-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mixed-gender-reveal-t-shirt-png-svg/ref/20531444/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Girl Holding Mug Mockup Graphic by Mockup And Design Store · Creative Fabrica`,
+                    description: `Click here and download the Girl Holding Mug Mockup graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/03/29/Girl-Holding-Mug-Mockup-Graphics-94403048-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/girl-holding-mug-mockup-16/ref/20531445/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Awareness Love Autism T`,
+                    description: `Click here and download the Awareness Love Autism T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/03/Awareness-Love-Autism-Tshirt-Graphics-117191567-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/awareness-love-autism-t-shirt/ref/20531446/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `This is My Architect Career T`,
+                    description: `Click here and download the This is My Architect Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/12/This-Is-My-Architect-Career-Tshirt-Graphics-117871934-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/this-is-my-architect-career-t-shirt/ref/20531447/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Be the Girl at the Gym T`,
+                    description: `Click here and download the Be the Girl at the Gym T-shirt Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2022/03/29/be-the-girl-at-the-Gym-Tshirt-Design-Graphics-28049641-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/be-the-girl-at-the-gym-t-shirt-design/ref/20531448/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Graffiti Digital Paper Print 8.5 Graphic by DigitalPrintableMe · Creative Fabrica`,
+                    description: `Click here and download the Graffiti Digital Paper Print 8.5 graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2019/09/Graffiti-Digital-Paper-Print-85-by-DigitalPrintableMe.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/graffiti-digital-paper-print-8-5-6/ref/20531449/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Dog and Girl Under Tree SVG Graphic by BlackCatArea · Creative Fabrica`,
+                    description: `Click here and download the Dog and Girl Under Tree SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/10/24/Dog-and-Girl-Under-Tree-SVG-Graphics-133874954-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/dog-and-girl-under-tree-svg-4/ref/20531450/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Threadrock Big Soccer T`,
+                    description: `Click here and download the Threadrock Big Soccer T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/25/Threadrock-Big-Soccer-Tshirt-Graphics-118755842-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/threadrock-big-soccer-t-shirt/ref/20531451/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Just a Girl Who Loves Christmas Graphic by TrendyPointShop · Creative Fabrica`,
+                    description: `Click here and download the Just a Girl Who Loves Christmas graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2021/12/08/Just-a-Girl-Who-Loves-Christmas-Graphics-21422857-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/just-a-girl-who-loves-christmas-70/ref/20531452/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Warning I'm Retired Career T`,
+                    description: `Click here and download the Warning I'm Retired Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/15/Warning-Im-Retired-Career-Tshirt-Graphics-118093216-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/warning-im-retired-career-t-shirt/ref/20531453/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Girl and Dog Svg, Dog Lover Svg Graphic by BlackCatMedia · Creative Fabrica`,
+                    description: `Click here and download the Girl and Dog Svg, Dog Lover Svg graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2026/01/16/Girl-and-dog-svg-Dog-lover-svg-Graphics-140233850-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/girl-and-dog-svg-dog-lover-svg/ref/20531454/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Mental Health Awareness T`,
+                    description: `Click here and download the Mental Health Awareness T-Shirt Free graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/28/Mental-Health-Awareness-TShirt-Free-Graphics-118956225-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/mental-health-awareness-t-shirt-free-7/ref/20531455/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Aviator Pilot Airplane Aircraft Aviation Graphic by N Creation · Creative Fabrica`,
+                    description: `Click here and download the Aviator Pilot Airplane Aircraft Aviation graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/12/09/Aviator-Pilot-Airplane-Aircraft-Aviation-Graphics-111623305-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/aviator-pilot-airplane-aircraft-aviation-5/ref/20531456/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Wolf Girl Svg, Wolf Woman SVG, Wolf SVG Graphic by BlackCatMedia · Creative Fabrica`,
+                    description: `Click here and download the Wolf Girl Svg, Wolf Woman SVG, Wolf SVG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/06/27/Wolf-Girl-Svg-Wolf-Woman-SVG-Wolf-SVG-Graphics-125000522-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/wolf-girl-svg-wolf-woman-svg-wolf-svg-12/ref/20531457/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Two Heart One Valentine’s Day T`,
+                    description: `Click here and download the Two Heart One Valentine’s Day T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/01/09/Two-Heart-One-Valentines-Day-Tshirt-Graphics-113515314-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/two-heart-one-valentines-day-t-shirt/ref/20531458/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Beach Mug Mockup Graphic by Mockup And Design Store · Creative Fabrica`,
+                    description: `Click here and download the Beach Mug Mockup graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/03/29/Beach-Mug-Mockup-Graphics-94403081-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/beach-mug-mockup-10/ref/20531459/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Funny Nurse Emergency Career T`,
+                    description: `Click here and download the Funny Nurse Emergency Career T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/13/Funny-Nurse-Emergency-Career-Tshirt-Graphics-117948945-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/funny-nurse-emergency-career-t-shirt/ref/20531460/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Women’s Day T`,
+                    description: `Click here and download the Women’s Day T-shirt Design graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/01/04/Womens-Day-Tshirt-Design-Graphics-113174366-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/womens-day-t-shirt-design-130/ref/20531461/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `Girl Holding Mug Mockup Graphic by Mockup And Design Store · Creative Fabrica`,
+                    description: `Click here and download the Girl Holding Mug Mockup graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2024/03/29/Girl-Holding-Mug-Mockup-Graphics-94403204-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/girl-holding-mug-mockup-17/ref/20531462/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                },
+                {
+                    name: `A Day Without Soccer T`,
+                    description: `Click here and download the A Day Without Soccer T-shirt graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓`,
+                    image_url: `https://www.creativefabrica.com/wp-content/uploads/2025/03/25/A-Day-Without-Soccer-Tshirt-Graphics-118755140-1.jpg`,
+                    affiliate_url: `https://www.creativefabrica.com/product/a-day-without-soccer-t-shirt/ref/20531463/`,
+                    button: `CLICK HERE AND DOWLOAD`
+                }
+            ];
+
+            // --------------------------------------------------------------
+            // render cards into the grid
+            // --------------------------------------------------------------
+            const grid = document.getElementById('product-grid');
+            if (grid) {
+                let htmlString = '';
+                for (let p of products) {
+                    htmlString += `
+                        <div class="card">
+                            <a href="${p.affiliate_url}" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="View product: ${p.name.replace(/"/g, '&quot;')}">
+                                <img src="${p.image_url}" alt="${p.name.replace(/"/g, '&quot;')}" loading="lazy">
+                            </a>
+                            <div class="card-content">
+                                <h3>${p.name}</h3>
+                                <p class="description">${p.description}</p>
+                                <a href="${p.affiliate_url}" target="_blank" rel="noopener noreferrer" class="btn-affiliate">${p.button}</a>
+                            </div>
+                        </div>
+                    `;
+                }
+                grid.innerHTML = htmlString;
+            }
+        })();
+    </script>
+    <!-- very subtle footer (optional, keeps vintage feel) -->
+    <div style="max-width:1440px; margin:1rem auto 0; padding:2rem 1.5rem 1.5rem; text-align:center; color:#aaa; font-size:0.8rem; border-top:1px solid #eee;">
+        ✦ 3D SVG Flower Collection · all designs are available via Creative Fabrica ✦
+    </div>
+</body>
+</html>
