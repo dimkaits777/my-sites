@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium 3D Floral SVG Landing Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#D4A5A5",
+                        "charcoal": "#333333",
+                        "background-light": "#FFFDF5",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "card": "12px",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">@layer base {
+    body {
+        @apply bg-background-light text-charcoal font-display;
+        }
+    }
+.floral-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuD6JGxQLbSdRWGYLYDSnOQS1RB1l9ljUUzM_egBHZHl3siXcF8UFNlkb6LWntvK4goG0Zbw1MW1v-4J1gwQQBLbYg1VoDpnu8n0VuXac8C3EBHYmm4SgQXIrXD4lKjANZnmnHwj0O1__OoCZ_31ITe2yhS-EgUkMfqDHyo8egkurLlQeq4_uCq4s-IwLMIp1ZG3Kd1_FRCMzsqK-9_HOda-Wh2slLJOam6EwUau5yHukyYG4FdzedZAPfFI3m6ll-Jo67UDKB9fMls), radial-gradient(circle at 2px 2px, rgba(212, 165, 165, 0.05) 1px, transparent 0);
+    background-size: auto, 40px 40px
+    }
+.card-shadow {
+    box-shadow: 0 10px 30px -12px rgba(51, 51, 51, 0.08)
+    }
+.btn-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease
+    }
+.btn-lift:hover {
+    transform: translatey(-2px);
+    box-shadow: 0 4px 12px rgba(212, 165, 165, 0.3)
+    }
+.image-zoom {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)
+    }
+.group:hover .image-zoom {
+    transform: scale(1.08)
+    }
+.sticky-nav {
+    @apply sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-primary/10;
+    }</style>
+</head>
+<body class="bg-background-light">
+<header class="sticky-nav">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
+<h2 class="text-xl font-extrabold tracking-tight text-charcoal uppercase">PaperBloom</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<div class="relative group">
+<button class="flex items-center gap-1 text-sm font-bold text-charcoal hover:text-primary transition-colors py-8">
+                        Categories <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute top-full left-0 w-48 bg-white shadow-xl rounded-lg border border-primary/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+<a class="block px-4 py-2 text-sm hover:bg-primary/5 rounded-md" href="#">Shadow Boxes</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/5 rounded-md" href="#">3D Flowers</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/5 rounded-md" href="#">Greeting Cards</a>
+<a class="block px-4 py-2 text-sm hover:bg-primary/5 rounded-md" href="#">Wall Art</a>
+</div>
+</div>
+<a class="text-sm font-bold text-charcoal hover:text-primary transition-colors" href="#">Tutorials</a>
+<a class="text-sm font-bold text-charcoal hover:text-primary transition-colors" href="#">Licensing</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-stone-100 rounded-full px-4 py-1.5 border border-transparent focus-within:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-stone-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-40 placeholder:text-stone-400" placeholder="Search templates..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm btn-lift shadow-sm">
+<span class="material-symbols-outlined text-sm">shopping_bag</span>
+                Shop All
+            </button>
+</div>
+</div>
+</header>
+<main>
+<section class="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28 floral-pattern">
+<div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+<div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-8">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span class="text-primary text-[11px] font-bold uppercase tracking-widest">Featured Collection 2024</span>
+</div>
+<h1 class="font-serif text-5xl md:text-7xl text-charcoal font-normal mb-8 leading-[1.1]">
+                Bring Your Crafts to Life: <br/>
+<span class="text-primary italic">Premium 3D Paper Flower</span> SVG Collection
+            </h1>
+<p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Elevate your DIY projects with professional-grade digital templates. Optimized for Cricut, Silhouette, and Brother ScanNCut.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-10 py-4 bg-charcoal text-white font-bold rounded-xl btn-lift shadow-xl">
+                    EXPLORE COLLECTION
+                </button>
+<button class="w-full sm:w-auto px-10 py-4 border-2 border-primary/30 text-charcoal font-bold rounded-xl hover:bg-primary/5 transition-all">
+                    VIEW TUTORIALS
+                </button>
+</div>
+</div>
+<div class="mt-20 border-y border-primary/10 py-6 bg-white/40 backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-16">
+<div class="flex items-center gap-2 grayscale opacity-70">
+<span class="font-bold text-lg text-charcoal">Trusted by 5,000+ Crafters</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="ml-2 text-charcoal font-bold text-sm">4.9/5 Rating</span>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-6 py-20">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+<div>
+<h2 class="text-3xl font-bold text-charcoal mb-2">New Arrivals</h2>
+<p class="text-stone-500">Discover our latest intricate designs for your next masterpiece.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-stone-400 uppercase tracking-widest">Filter By:</span>
+<select class="border-stone-200 rounded-lg text-sm focus:ring-primary focus:border-primary py-2 pr-10">
+<option>All Templates</option>
+<option>Most Popular</option>
+<option>Newest</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Paper craft banner flowers" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7JK-CZi8YzYFtib-QttZ7x0dvpWpcnJkvKURuhvv1DT5kkLZyEeDHcoZsDnaY9bxX8fxvTv_vqxn2e_BcTmKivs8G0KSXwszZIiX1JveXiOJa60l1oF0rcqYWWxwzfKGbMSIiYypnCq4hXsbjYa3-Dy-T0nAuI946OJNU8WfMrPYiGyVHWFgVP7p61FP4HIPLltjbNAT3WJ4w04jr1_gK18xqtix9OBYZEs1UOd2kcFb8rkBi1UpC_Bndp2wgWyXyiit5mXYxIkk"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-charcoal border border-primary/10">BEST SELLER</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Party Flowers for Banners</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Elegant layered floral designs perfect for celebratory banners. Includes multiple petal styles and centers.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100 lg:mt-12">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="3D sunflower paper craft" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwJZILYGz4cCgrMjzOpWC17KLmHSDG_ixxR_0kgSqen-mad7aLJ8u1x4Kirv4s98g5F5d7mEH5gh_soOU6GMYjCOpCieDWxsQchSUwj2cEY6bx4ND8mgsNO7i-DLwJOsJqstolVMXUJF9z_IwPZuJmcUxqJ1m7Zatqj_YuH2GZLYHwaQE-NrCg7934nE33Kbpk9zMIbBXW7rQ5Z1vuipzYxajuMxu7T2KQEIv02FmMdXlo3t6wRfjS_KHeTSzk0991saqksSQ_GlM"/>
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">EDITOR'S PICK</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Sunflower Welcome Sign</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Cheerful 3D sunflower template for wall decor or welcome signage. Optimised for easy assembly.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Layered lotus flower template" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApXLG6B4_xOmd3ivWz-ZzdWd4sMx4uNsMNhQPt8d5GaSuc4B3dmV1jPHs1fb4vAyMf9vF-Cc5SjBOBtafVQuQfvW_pJ9zgi-ojnBuP792a6zTUiQlulDDrT0Ea0-e8aS1DoZt3ShjBYc7nGNdx7K605h_kb4-v7I7-oH8ixYDEfYr-__ei-bsVIe2PDFkS5ls4Nn8cPwma_9eVsiGLhy-BGwql792j2XFuCNziIC6y8We8LYLUM5DFT_Vo2QlRNGA2OtVBeZH9dac"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-charcoal border border-primary/10">NEW DESIGN</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Lotus Flower Essence</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Elegant layered lotus template. Digital download only. Perfect for focal wall art or nursery decor.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Shadow box template" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF2P75UUiQU5lEXAQ1-McuhhW00CdIff0GdWsGkuGMQoh1gmD34gEQ8xwkWuefLfDlpqCWOysJtskL4gmGee1K2E5J2grSwajV5IP7C4GhsiUiB0MB7v-aUNHYmIPCvLia9KIr8x_9J1LrdXSuSJL5UjMhK2vslZ93sEJFXwVblqndL2sZMCXO2N1v57SwGP4RK2SnAet-zU-obbF1mxeELux76DBgWBZnlne6vykfl0tTXZ-B7e2aSAke8MOSx6w54sMPZEGV4Y4"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Woodland Shadow Box</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Multi-layered 3D shadow box featuring an enchanting woodland scene with deer and pines.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100 lg:mt-12">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Floral centerpiece template" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsEV-ZPILfpqA9rw-uLll2HWUlJD60KGAu2azXn141YiahnlO4qOtD1ohTn5TnV7IeQcStEDBlKoj6t_4iC2S6AGSSWp9rHzJjkh0t0nb8Bg1L1S0m6VOx5Y2Cgb4iHIKLMUW2TQC5UDo5sv8AvLS7aEcPNjEUmTH6kp8ogjyeuj-JTKxV_Ij9i2DR7rE1VyFuXe2Jmem0OJO72CE8X7GVJFLYj4-GMAJUdQotqtF-VLHg6sIBgd4k9XA2MIBruL_sOOjD1ipb9hA"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Majestic Rose Focal</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Our most popular 3D rose design. Scalable for extra large wall flowers or table centerpieces.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+<div class="group flex flex-col bg-white rounded-card overflow-hidden card-shadow border border-stone-100">
+<div class="relative aspect-[4/5] overflow-hidden">
+<img alt="Paper succulents" class="w-full h-full object-cover image-zoom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKrZb_4POSFe3HOHf0tloNQoNshliK28bhGd8B5I2H__C225xO80-gyIimTSczH5r0V5Bor8zCHMvpadJ0LbO9uWwuVRnjZZEwt4w6_tv1D0ze764Pi9o8aES_SVngRQFx_a2Uam524KPNgP8bEiRLdDfnBjR7VZE-LTr7gapLUXb2T4UxADkbDEuLVaciHlglGeX6WpOzE-_OFa4k2CcHwpHbslh1J4C0tD5IEAdV6DeZGjlNrFCOBcLkvs50eJ-qZzINV9TgTWg"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Boho Succulent Garden</h3>
+<p class="text-stone-500 text-sm mb-6 flex-1">
+                        Set of 12 unique 3D paper succulent templates. Perfect for low-maintenance home decor projects.
+                    </p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl btn-lift flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        CLICK HERE AND DOWNLOAD
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-20 text-center">
+<button class="px-12 py-4 bg-white border-2 border-primary text-primary font-extrabold rounded-xl btn-lift uppercase tracking-widest text-sm">
+                View All 50+ Templates
+            </button>
+</div>
+</section>
+<section class="bg-charcoal py-24 text-white overflow-hidden relative">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<h2 class="font-serif text-4xl mb-6 italic">Crafted by You, Inspired by Us</h2>
+<p class="text-stone-400 mb-10 text-lg">
+                Join our community of makers. Tag us @PaperBloomCrafts on Instagram for a chance to be featured!
+            </p>
+<div class="flex justify-center flex-wrap gap-8">
+<a class="flex items-center gap-2 text-white hover:text-primary transition-colors text-lg font-bold" href="#">
+<span class="material-symbols-outlined">camera_enhance</span> Instagram
+                </a>
+<a class="flex items-center gap-2 text-white hover:text-primary transition-colors text-lg font-bold" href="#">
+<span class="material-symbols-outlined">bookmark_heart</span> Pinterest
+                </a>
+<a class="flex items-center gap-2 text-white hover:text-primary transition-colors text-lg font-bold" href="#">
+<span class="material-symbols-outlined">groups</span> Facebook Group
+                </a>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white pt-20 pb-10 border-t border-primary/10">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-20">
+<div class="col-span-1 lg:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">filter_vintage</span>
+<h2 class="text-xl font-extrabold tracking-tight text-charcoal uppercase">PaperBloom</h2>
+</div>
+<p class="text-stone-500 max-w-sm mb-8">
+                    The premier destination for high-quality 3D paper craft templates. Professional grade SVGs designed for the modern maker.
+                </p>
+<div class="bg-stone-50 p-6 rounded-2xl border border-stone-100 max-w-md">
+<h4 class="font-bold text-charcoal mb-2">Join our Newsletter</h4>
+<p class="text-sm text-stone-500 mb-4">Get 10% off your first order and weekly freebies.</p>
+<form class="flex gap-2">
+<input class="flex-1 rounded-lg border-stone-200 text-sm focus:ring-primary focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm btn-lift" type="submit">Join</button>
+</form>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-charcoal uppercase text-xs tracking-[0.2em]">Explore</h4>
+<ul class="space-y-4 text-sm text-stone-600">
+<li><a class="hover:text-primary transition-colors" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Free Templates</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Latest Additions</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shadow Box Sets</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-charcoal uppercase text-xs tracking-[0.2em]">Support</h4>
+<ul class="space-y-4 text-sm text-stone-600">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Commercial License</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tutorial Library</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-stone-100 flex flex-col md:flex-row items-center justify-between text-[11px] font-bold uppercase tracking-widest text-stone-400">
+<p>© 2024 PaperBloom Premium SVG Designs. All rights reserved.</p>
+<div class="flex gap-8 mt-6 md:mt-0">
+<a class="hover:text-charcoal transition-colors" href="#">Privacy</a>
+<a class="hover:text-charcoal transition-colors" href="#">Terms</a>
+<a class="hover:text-charcoal transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
