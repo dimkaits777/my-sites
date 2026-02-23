@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>3D SVG Flower Collection · papercut templates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #111;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.4rem, 8vw, 4rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            line-height: 1.1;
+            color: #1e1e1e;
+            border-left: 6px solid #e60023;
+            padding-left: 1.2rem;
+        }
+
+        /* responsive grid – clean, like vintage-fonts reference */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem 1.8rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* image link – no borders, no underlines */
+        .image-link {
+            display: block;
+            width: 100%;
+            background: #f8f8f8;
+            text-decoration: none;
+            border: 0;
+            outline: none;
+            line-height: 0;
+        }
+
+        .image-link img {
+            display: block;
+            width: 100%;
+            height: 200px;           /* strictly uniform height */
+            object-fit: cover;        /* crop to fill, keep proportions */
+            background: #f0f0f0;
+            border: none;
+            outline: none;
+        }
+
+        .card-content {
+            padding: 1.4rem 1.2rem 1.6rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 550;
+            margin-bottom: 0.65rem;
+            line-height: 1.3;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+
+        .description {
+            color: #3d3d3d;
+            font-size: 0.95rem;
+            margin-bottom: 1.4rem;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* button – exactly #e60023, white, rounded, uppercase */
+        .btn-affiliate {
+            display: inline-block;
+            background-color: #e60023;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            text-align: center;
+            letter-spacing: 0.3px;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(230, 0, 35, 0.15);
+            align-self: flex-start;
+            margin-top: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        .btn-affiliate:hover {
+            background-color: #b8001c;
+            box-shadow: 0 6px 12px rgba(230, 0, 35, 0.25);
+            color: white;
+        }
+
+        .card a {
+            text-decoration: none;
+        }
+
+        .btn-affiliate:focus-visible,
+        .image-link:focus-visible {
+            outline: 2px solid #e60023;
+            outline-offset: 2px;
+        }
+
+        /* mobile: one column, smaller padding */
+        @media (max-width: 580px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+                padding-left: 1rem;
+                border-left-width: 5px;
+                margin-bottom: 1.8rem;
+            }
+            .card-content {
+                padding: 1.2rem 1rem 1.4rem;
+            }
+            .btn-affiliate {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- main header as required -->
+        <h1>3D SVG Flower Collection</h1>
+
+        <!-- product grid injected via JavaScript -->
+        <div id="product-grid" class="product-grid"></div>
+    </div>
+
+    <script>
+        (function() {
+            // --------------------------------------------------------------
+            // PRODUCT DATA – extracted exactly from the provided list (46 items)
+            // each row: name, description, image_url, product_url, affiliate_url, button
+            // we use affiliate_url for both image and button links
+            // --------------------------------------------------------------
+            const products = [
+                {
+                    name: "Principessa · Creative Fabrica",
+                    description: "Click here and download the Principessa · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/20/Principessa-3D-SVG-100058001-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/principessa/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "PomPom Peony Poppy · Creative Fabrica",
+                    description: "Click here and download the PomPom Peony Poppy · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/07/03/PomPom-Peony-Poppy-3D-SVG-101018737-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/pompom-peony-poppy/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Hops Vine · Creative Fabrica",
+                    description: "Click here and download the Hops Vine · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/19/Hops-Vine-3D-SVG-99985649-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/hops-vine/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Love Always Wins Valentin SVG Layer 1937 · Creative Fabrica",
+                    description: "Click here and download the Love Always Wins Valentin SVG Layer 1937 · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/04/Love-Always-Wins-Valentin-SVG-Layer-1937-3D-SVG-141693393-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/love-always-wins-valentin-svg-layer-1937/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Folk Rabbit 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Folk Rabbit 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/23/Folk-Rabbit-3D-Shadow-Box-Paper-Cut-Graphics-65069077-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/folk-rabbit-3d-shadow-box-paper-cut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Balcony with Flowers 3D Shadow Box · Creative Fabrica",
+                    description: "Click here and download the Balcony with Flowers 3D Shadow Box · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/08/Balcony-with-Flowers-3D-Shadow-Box-3D-SVG-69137958-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/balcony-with-flowers-3d-shadow-box/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Folk Art Teapot 3D Shadow Box SVG · Creative Fabrica",
+                    description: "Click here and download the Folk Art Teapot 3D Shadow Box SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/04/06/Folk-Art-Teapot-3D-Shadow-Box-SVG-3D-SVG-66390499-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/folk-art-teapot-3d-shadow-box-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Moneta Flower Bouquet · Creative Fabrica",
+                    description: "Click here and download the Moneta Flower Bouquet · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/05/31/Moneta-Flower-Bouquet-3D-SVG-98719006-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/moneta-flower-bouquet/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Nursery Room Boho Rainbow 3D Shadow Box · Creative Fabrica",
+                    description: "Click here and download the Nursery Room Boho Rainbow 3D Shadow Box · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/01/Nursery-Room-Boho-Rainbow-3D-Shadow-Box-3D-SVG-68557285-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/nursery-room-boho-rainbow-3d-shadow-box/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Gravestone with Wings 3D Shadow Box · Creative Fabrica",
+                    description: "Click here and download the Gravestone with Wings 3D Shadow Box · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/31/Gravestone-with-Wings-3D-Shadow-Box-3D-SVG-71015127-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/gravestone-with-wings-3d-shadow-box/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Folk Bird 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Folk Bird 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/27/Folk-Bird-3D-Shadow-Box-Paper-Cut-Graphics-65431518-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/folk-bird-3d-shadow-box-paper-cut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Dragonfly on a Flower 3D Shadow Box SVG · Creative Fabrica",
+                    description: "Click here and download the Dragonfly on a Flower 3D Shadow Box SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/15/Dragonfly-on-a-Flower-3D-Shadow-Box-SVG-Graphics-64346799-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/dragonfly-on-a-flower-3d-shadow-box-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Wood Lily · Creative Fabrica",
+                    description: "Click here and download the Wood Lily · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/26/Wood-Lily-3D-SVG-100459562-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/wood-lily/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Cactus Land 3D Shadow Box Paper Cut SVG · Creative Fabrica",
+                    description: "Click here and download the Cactus Land 3D Shadow Box Paper Cut SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/15/Cactus-Land-3D-Shadow-Box-Paper-Cut-SVG-Graphics-64357235-1-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/cactus-land-3d-shadow-box-paper-cut-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Valentine's Day Dahlias, Peonies, and Leaves Bouquet · Creative Fabrica",
+                    description: "Click here and download the Valentine's Day Dahlias, Peonies, and Leaves Bouquet · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/06/22/Valentines-Day-Dahlias-Peonies-and-Leaves-Bouquet-3D-SVG-72734347-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/valentines-day-dahlias-peonies-and-leaves-bouquet/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Valentine's Day Sweet Peas and Cosmos Bouquet · Creative Fabrica",
+                    description: "Click here and download the Valentine's Day Sweet Peas and Cosmos Bouquet · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/06/21/Valentines-Day-Sweet-Peas-and-Cosmos-Bouquet-3D-SVG-72654510-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/valentines-day-sweet-peas-and-cosmos-bouquet/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Floral Spring 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Floral Spring 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/23/Floral-Spring-3D-Shadow-Box-Paper-Cut-Graphics-65065857-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/floral-spring-3d-shadow-box-paper-cut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Layered Deer Flowers SVG 3D Crafts Art Graphic by Computer Garden · Creative Fabrica",
+                    description: "Click here and download the Layered Deer Flowers SVG 3D Crafts Art graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/05/23/Layered-Deer-Flowers-SVG-3D-Crafts-Art-Graphics-98184953-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/layered-deer-flowers-svg-3d-crafts-art-3/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Letters I Baby Girl Alphabet 3D Papercut · Creative Fabrica",
+                    description: "Click here and download the Letters I Baby Girl Alphabet 3D Papercut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/02/Letters-I-Baby-Girl-Alphabet-3D-Papercut-3D-SVG-68647100-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/letters-i-baby-girl-alphabet-3d-papercut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Emperor Dahlia · Creative Fabrica",
+                    description: "Click here and download the Emperor Dahlia · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/10/Emperor-Dahlia-3D-SVG-99412985-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/emperor-dahlia/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Succulent 3D Layered Paper Cut SVG SVG Cut file by Creative Fabrica Crafts · Creative Fabrica",
+                    description: "Click here and download the Succulent 3D Layered Paper Cut SVG SVG cut file · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/15/Succulent-3D-Layered-Paper-Cut-SVG-Graphics-64360502-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/succulent-3d-layered-paper-cut-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Succulent 3D Light Box Paper Cut SVG · Creative Fabrica",
+                    description: "Click here and download the Succulent 3D Light Box Paper Cut SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/15/Succulent-3D-Light-Box-Paper-Cut-SVG-Graphics-64344812-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/succulent-3d-light-box-paper-cut-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Fall Leaves Bouquet Card · Creative Fabrica",
+                    description: "Click here and download the Fall Leaves Bouquet Card · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/09/21/Fall-Leaves-Bouquet-Card-3D-SVG-79754902-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/fall-leaves-bouquet-card/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Roses 3D Shadow Box Paper Cut SVG · Creative Fabrica",
+                    description: "Click here and download the Roses 3D Shadow Box Paper Cut SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/15/Roses-3D-Shadow-Box-Paper-Cut-SVG-Graphics-64340197-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/roses-3d-shadow-box-paper-cut-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Rudbeckia Autumn Sunset · Creative Fabrica",
+                    description: "Click here and download the Rudbeckia Autumn Sunset · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/25/Rudbeckia-Autumn-Sunset-3D-SVG-100399487-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/rudbeckia-autumn-sunset/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Dahlias, Cosmos, and Cornflowers 3d Flower Bouquet · Creative Fabrica",
+                    description: "Click here and download the Dahlias, Cosmos, and Cornflowers 3d Flower Bouquet · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/06/22/Dahlias-Cosmos-and-Cornflowers-3d-Flower-Bouquet-3D-SVG-72733868-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/dahlias-cosmos-and-cornflowers-3d-flower-bouquet/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Valentine's Love Message Roses SVG 1926 · Creative Fabrica",
+                    description: "Click here and download the Valentine's Love Message Roses SVG 1926 · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/29/Valentines-love-message-roses-SVG-1926-3D-SVG-141219271-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/valentines-love-message-roses-svg-1926/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Baby Crib with Flowers Pop Up Box Card · Creative Fabrica",
+                    description: "Click here and download the Baby Crib with Flowers Pop Up Box Card · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/23/Baby-Crib-with-Flowers-Pop-Up-Box-Card-3D-SVG-65083460-1-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/baby-crib-with-flowers-pop-up-box-card/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Riri Flowers · Creative Fabrica",
+                    description: "Click here and download the Riri Flowers · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/07/04/Riri-Flowers-3D-SVG-101101140-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/riri-flowers/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Amaryllis · Creative Fabrica",
+                    description: "Click here and download the Amaryllis · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/26/Amaryllis-3D-SVG-100461284-1-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/amaryllis-34/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Amazing Grey Shirley Poppy · Creative Fabrica",
+                    description: "Click here and download the Amazing Grey Shirley Poppy · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/07/03/Amazing-Grey-Shirley-Poppy-3D-SVG-101029963-1-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/amazing-grey-shirley-poppy/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Floral Window 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Floral Window 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/09/Floral-Window-3D-Shadow-Box-Paper-Cut-3D-SVG-69214039-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/floral-window-3d-shadow-box-paper-cut-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Paper Flowers SVG, 3D Paper Flower DIY Graphic by Digital Craftyfox · Creative Fabrica",
+                    description: "Click here and download the Paper Flowers SVG, 3D Paper Flower DIY graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/02/26/Paper-Flowers-SVG-3D-Paper-Flower-DIY-Graphics-91900883-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/paper-flowers-svg-3d-paper-flower-diy/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Easter Basket",
+                    description: "Click here and download the Easter Basket - Eggs and Flowers · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/01/24/Easter-basket-Eggs-and-flowers-Graphics-58741411-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/easter-basket-eggs-and-flowers/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Sunflower",
+                    description: "Click here and download the Sunflower - Vanilla Ice · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/25/Sunflower-Vanilla-Ice-3D-SVG-100408193-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/sunflower-vanilla-ice/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Bee Butterfly and Flowers Decoration · Creative Fabrica",
+                    description: "Click here and download the Bee Butterfly and Flowers Decoration · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2022/12/01/Bee-butterfly-and-flowers-decoration-Graphics-49742739-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/bee-butterfly-and-flowers-decoration/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Spring Grasshoper 3D Shadow Box Papercut · Creative Fabrica",
+                    description: "Click here and download the Spring Grasshoper 3D Shadow Box Papercut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/20/Spring-Grasshoper-3D-Shadow-Box-Papercut-Graphics-64785706-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/spring-grasshoper-3d-shadow-box-papercut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Floral Horse Head 3D Shadow Box Papercut · Creative Fabrica",
+                    description: "Click here and download the Floral Horse Head 3D Shadow Box Papercut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/16/Floral-Horse-Head-3D-Shadow-Box-Papercut-Graphics-64463469-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/floral-horse-head-3d-shadow-box-papercut-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Cosmic Cupcake · Creative Fabrica",
+                    description: "Click here and download the Cosmic Cupcake · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/05/Cosmic-Cupcake-3D-SVG-99057318-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/cosmic-cupcake/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Hummingbird & Flowers 3D Mug Wrap PNG Graphic by Foxmia · Creative Fabrica",
+                    description: "Click here and download the Hummingbird & Flowers 3D Mug Wrap PNG graphic · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/06/24/Hummingbird-Flowers-3D-Mug-Wrap-PNG-Graphics-124751420-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/hummingbird-flowers-3d-mug-wrap-png-15/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Spring Flowers · Creative Fabrica",
+                    description: "Click here and download the Spring Flowers · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/07/30/Spring-Flowers-3D-SVG-102845094-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/spring-flowers-111/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Spring Flowers 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Spring Flowers 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/23/Spring-Flowers-3D-Shadow-Box-Paper-Cut-Graphics-65071807-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/spring-flowers-3d-shadow-box-paper-cut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Potted Aloe Vera Layered Plant · Creative Fabrica",
+                    description: "Click here and download the Potted Aloe Vera Layered Plant · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/03/07/Potted-Aloe-Vera-Layered-Plant-Graphics-63537715-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/potted-aloe-vera-layered-plant/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Loved Beyond Measure 3D Shadow Box · Creative Fabrica",
+                    description: "Click here and download the Loved Beyond Measure 3D Shadow Box · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/03/Loved-Beyond-Measure-3D-Shadow-Box-3D-SVG-68728620-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/loved-beyond-measure-3d-shadow-box/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Balloon Butterfly 3D Paper Cut SVG · Creative Fabrica",
+                    description: "Click here and download the Balloon Butterfly 3D Paper Cut SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/22/Balloon-Butterfly-3D-Paper-Cut-SVG-3D-SVG-70271331-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/balloon-butterfly-3d-paper-cut-svg-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Straw Flowers · Creative Fabrica",
+                    description: "Click here and download the Straw Flowers · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/25/Straw-Flowers-3D-SVG-100406422-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/straw-flowers/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Floral Welcome Sign 3D Shadow Box SVG · Creative Fabrica",
+                    description: "Click here and download the Floral Welcome Sign 3D Shadow Box SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/04/07/Floral-Welcome-Sign-3D-Shadow-Box-SVG-3D-SVG-66527614-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/floral-welcome-sign-3d-shadow-box-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Aphrodite · Creative Fabrica",
+                    description: "Click here and download the Aphrodite · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/14/Aphrodite-3D-SVG-99712863-1-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/aphrodite-19/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Desert Rose Succulent Plant · Creative Fabrica",
+                    description: "Click here and download the Desert Rose Succulent Plant · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/10/Desert-Rose-Succulent-Plant-3d-svgs-61279088.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/desert-rose-succulent-plant/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Balcony Flowers 3D Shadow Box Paper Cut · Creative Fabrica",
+                    description: "Click here and download the Balcony Flowers 3D Shadow Box Paper Cut · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/08/Balcony-Flowers-3D-Shadow-Box-Paper-Cut-3D-SVG-69137529-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/balcony-flowers-3d-shadow-box-paper-cut/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Flower and Butterflies Silhouette 3D SVG · Creative Fabrica",
+                    description: "Click here and download the Flower and Butterflies Silhouette 3D SVG · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/05/08/Flower-and-Butterflies-Silhouette-3D-SVG-3D-SVG-69140517-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/flower-and-butterflies-silhouette-3d-svg/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                },
+                {
+                    name: "Southern Magnolia · Creative Fabrica",
+                    description: "Click here and download the Southern Magnolia · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/25/Southern-Magnolia-3D-SVG-100405400-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/southern-magnolia-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWLOAD"
+                }
+            ];
+
+            // render cards
+            const grid = document.getElementById('product-grid');
+            if (grid) {
+                let html = '';
+                for (let p of products) {
+                    // escape quotes for attributes (replace " with &quot;)
+                    const nameEsc = p.name.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                    const descEsc = p.description.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                    html += `
+                        <div class="card">
+                            <a href="${p.affiliate_url}" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="View product: ${nameEsc}">
+                                <img src="${p.image_url}" alt="${nameEsc}" loading="lazy">
+                            </a>
+                            <div class="card-content">
+                                <h3>${p.name}</h3>
+                                <p class="description">${p.description}</p>
+                                <a href="${p.affiliate_url}" target="_blank" rel="noopener noreferrer" class="btn-affiliate">${p.button}</a>
+                            </div>
+                        </div>
+                    `;
+                }
+                grid.innerHTML = html;
+            }
+        })();
+    </script>
+    <!-- optional vintage-style footer -->
+    <div style="max-width:1440px; margin:1rem auto 0; padding:2rem 1.5rem 1.5rem; text-align:center; color:#aaa; font-size:0.8rem; border-top:1px solid #eee;">
+        ✦ 3D SVG Flower Collection · all designs available via Creative Fabrica ✦
+    </div>
+</body>
+</html>
