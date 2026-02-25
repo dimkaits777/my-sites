@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sans Serif Fonts · Unlimited Access</title>
+    <!-- Google Fonts & Font Awesome (для иконок) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f8;
+            color: #1e1e2f;
+            line-height: 1.5;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(145deg, #0a2540 0%, #1f3a5f 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ffd166;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .hero:hover {
+            background: linear-gradient(145deg, #0f2e4a 0%, #25476f 100%);
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .hero-content .free {
+            color: #ffd166;
+            font-style: italic;
+            background: rgba(255,209,102,0.15);
+            padding: 0 12px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .hero-sub {
+            font-size: 1.25rem;
+            margin-top: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-cta {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #ffd166;
+            color: #0a2540;
+            padding: 16px 45px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.01em;
+            transition: all 0.2s;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+        .btn-primary i {
+            font-size: 1.2rem;
+        }
+        .btn-primary:hover {
+            background: #ffe294;
+            transform: scale(1.02);
+            box-shadow: 0 25px 35px -8px black;
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 16px 35px;
+            border-radius: 60px;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Социальное доказательство */
+        .social-proof {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #eaeef2;
+        }
+        .proof-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px 50px;
+        }
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+        .stars {
+            color: #ffb800;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+        }
+        .badge {
+            background: #e8f0fe;
+            color: #1f3a5f;
+            padding: 6px 15px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Преимущества */
+        .features {
+            padding: 70px 0;
+            background: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #1f3a5f;
+            margin-bottom: 15px;
+        }
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .feature-desc {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* Секция шрифтов */
+        .fonts-section {
+            padding: 70px 0;
+            background: #f6f6f8;
+        }
+        .section-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+            border-left: 5px solid #1f3a5f;
+            padding-left: 25px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+        .section-header p {
+            color: #4b5565;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        .section-link {
+            font-weight: 700;
+            color: #1f3a5f;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.2s;
+        }
+        .section-link:hover {
+            gap: 10px;
+        }
+        .fonts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .font-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: all 0.25s ease;
+            border: 1px solid #eaeef2;
+            display: flex;
+            flex-direction: column;
+        }
+        .font-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(31,58,95,0.2);
+            border-color: transparent;
+        }
+        .font-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+        .font-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .font-card:hover .font-image img {
+            transform: scale(1.05);
+        }
+        .font-content {
+            padding: 25px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .font-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .font-desc {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .font-btn {
+            background: #1f3a5f;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+            font-size: 1rem;
+        }
+        .font-btn i {
+            font-size: 0.9rem;
+        }
+        .font-btn:hover {
+            background: #143049;
+            transform: scale(1.02);
+        }
+
+        /* Отзыв */
+        .testimonial {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid #eaeef2;
+            border-bottom: 1px solid #eaeef2;
+        }
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fafbfc;
+            padding: 40px 45px;
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 10px 25px -15px #1f3a5f;
+        }
+        .testimonial-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid #ffd166;
+        }
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1e2b3c;
+            margin-bottom: 20px;
+            quotes: "“" "”";
+        }
+        .testimonial-text::before {
+            content: "“";
+            font-size: 3rem;
+            color: #ffd166;
+            vertical-align: middle;
+        }
+        .testimonial-text::after {
+            content: "”";
+            font-size: 3rem;
+            color: #ffd166;
+            vertical-align: middle;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: #0a2540;
+        }
+        .testimonial-role {
+            color: #6c7a8d;
+            font-size: 0.9rem;
+        }
+
+        /* Предфинальный CTA с таймером */
+        .cta-timer {
+            background: linear-gradient(135deg, #1f3a5f, #143049);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+        .timer {
+            font-size: 3.5rem;
+            font-weight: 800;
+            font-family: monospace;
+            background: #0f263b;
+            display: inline-block;
+            padding: 10px 35px;
+            border-radius: 60px;
+            letter-spacing: 5px;
+            margin: 30px 0 25px;
+            border: 1px solid #ffd16655;
+        }
+        .timer i {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #ffd166;
+        }
+        .cta-timer .btn-primary {
+            background: white;
+            color: #0a2540;
+            box-shadow: 0 20px 30px -5px black;
+        }
+        .cta-timer .btn-primary:hover {
+            background: #ffd166;
+            color: #0a2540;
+        }
+        .guarantee {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        .guarantee i {
+            color: #ffd166;
+            margin-right: 8px;
+        }
+
+        /* Футер */
+        footer {
+            background: #0f1a2c;
+            color: #a6b7c9;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        .footer-links a:hover {
+            color: #ffd166;
+        }
+        .copyright i {
+            color: #ffd166;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 700px) {
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .timer {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+            .testimonial-card {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ГЛАВНЫЙ БАННЕР (кликабельный целиком) -->
+<a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="hero">
+    <div class="hero-content container">
+        <h1>
+            Sans Serif Fonts Collection 
+            <span class="free">FREE</span>
+        </h1>
+        <div class="hero-sub">Unlimited access to 10,000+ premium typefaces · Commercial license included · 2026 updates</div>
+        <div class="hero-cta">
+            <span class="btn-primary"><i class="fas fa-download"></i> Claim Free Access</span>
+            <span class="btn-secondary"><i class="fas fa-star"></i> Learn More</span>
+        </div>
+    </div>
+</a>
+
+<!-- СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО -->
+<div class="social-proof">
+    <div class="container proof-grid">
+        <div class="proof-item">
+            <i class="fas fa-check-circle" style="color:#1f3a5f; font-size:1.8rem;"></i>
+            <span>Trusted by 50,000+ designers</span>
+        </div>
+        <div class="proof-item">
+            <div class="stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <span>4.92 / 5 (1,200+ reviews)</span>
+        </div>
+        <div class="proof-item badge">
+            <i class="fas fa-gem"></i> Exclusive 2026 Drop
+        </div>
+    </div>
+</div>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<div class="features">
+    <div class="container features-grid">
+        <div>
+            <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
+            <div class="feature-title">Commercial License</div>
+            <div class="feature-desc">Use for client work, merch, branding — no extra fees.</div>
+        </div>
+        <div>
+            <div class="feature-icon"><i class="fas fa-clock"></i></div>
+            <div class="feature-title">Instant Download</div>
+            <div class="feature-desc">Access all fonts immediately in TTF, OTF, WOFF.</div>
+        </div>
+        <div>
+            <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="feature-title">Updated for 2026</div>
+            <div class="feature-desc">Latest versions with extended glyph sets and kerning.</div>
+        </div>
+        <div>
+            <div class="feature-icon"><i class="fas fa-headset"></i></div>
+            <div class="feature-title">24/7 Support</div>
+            <div class="feature-desc">We’re here to help via chat & email.</div>
+        </div>
+    </div>
+</div>
+
+<!-- ИЗБРАННЫЕ ШРИФТЫ -->
+<div class="fonts-section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2>Featured Typefaces</h2>
+                <p>The highest‑rated sans serifs of 2024</p>
+            </div>
+            <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="section-link">
+                View full gallery <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="fonts-grid">
+            <!-- Open Sans -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400&auto=format&fit=crop" alt="Open Sans preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Open Sans</h3>
+                    <p class="font-desc">Neutral, friendly, highly readable — perfect for UI and body text.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Download Now <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Montserrat -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400&auto=format&fit=crop" alt="Montserrat preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Montserrat</h3>
+                    <p class="font-desc">Geometric, urban, modern — inspired by the signage of Buenos Aires.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Get License <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Roboto -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1598609338629-8034b458fc20?w=400&auto=format&fit=crop" alt="Roboto preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Roboto</h3>
+                    <p class="font-desc">Mechanical skeleton with geometric forms — the digital standard.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Download Now <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Inter -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&auto=format&fit=crop" alt="Inter preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Inter</h3>
+                    <p class="font-desc">Crafted for screens — tall x‑height, perfect for dashboards and apps.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Download Now <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Lato -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1587614387466-0a72ca909e16?w=400&auto=format&fit=crop" alt="Lato preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Lato</h3>
+                    <p class="font-desc">Semi‑rounded, sleek, professional yet friendly — a balanced choice.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Download Now <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Raleway -->
+            <div class="font-card">
+                <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-image">
+                    <img src="https://images.unsplash.com/photo-1605436247078-0fefa68a5611?w=400&auto=format&fit=crop" alt="Raleway preview">
+                </a>
+                <div class="font-content">
+                    <h3 class="font-name">Raleway</h3>
+                    <p class="font-desc">Elegant, thin, sophisticated — ideal for headlines and logos.</p>
+                    <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="font-btn">
+                        Download Now <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ОТЗЫВ -->
+<div class="testimonial">
+    <div class="container">
+        <div class="testimonial-card">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Chen" class="testimonial-photo">
+            <div class="testimonial-text">
+                The depth of this collection is insane. I found the perfect typeface for my client’s rebrand in minutes. Commercial license included is a massive win.
+            </div>
+            <div class="testimonial-author">Sarah Chen</div>
+            <div class="testimonial-role">Creative Director, Studio Nimbus</div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA С ТАЙМЕРОМ (срочность) -->
+<div class="cta-timer">
+    <div class="container">
+        <h2 style="font-size: 2.5rem; font-weight: 800;">Free access ends in…</h2>
+        <div class="timer">
+            <i class="fas fa-hourglass-half"></i> 06 : 14 : 37
+        </div>
+        <p style="font-size: 1.3rem; margin-bottom: 30px;">Claim your lifetime license before the offer expires</p>
+        <a href="https://www.creativefabrica.com/fonts/sans-serif-fonts/ref/20469587/" target="_blank" rel="noopener nofollow" class="btn-primary">
+            <i class="fas fa-gift"></i> Get Instant Access
+        </a>
+        <div class="guarantee">
+            <i class="fas fa-shield-alt"></i> 30‑day money‑back guarantee · No questions asked
+        </div>
+    </div>
+</div>
+
+<!-- ФУТЕР -->
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Affiliate Disclosure</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="copyright">
+            <i class="far fa-copyright"></i> 2026 Sans Serif Fonts Collection. All rights reserved.<br>
+            This site is an affiliate of Creative Fabrica.
+        </div>
+    </div>
+</footer>
+
+<!-- Эмуляция таймера (просто для вида, не работает) -->
+<script>
+    (function() {
+        // Чисто декоративный таймер — обновляем каждую секунду для красоты (не влияет на конверсию)
+        const timerDiv = document.querySelector('.timer');
+        if (timerDiv) {
+            let hours = 6;
+            let minutes = 14;
+            let seconds = 37;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; }
+                if (minutes < 0) { minutes = 59; hours--; }
+                if (hours < 0) { hours = 23; } // не даём уйти в минус
+                timerDiv.innerHTML = `<i class="fas fa-hourglass-half"></i> ${String(hours).padStart(2,'0')} : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+            }, 1000);
+        }
+    })();
+</script>
+
+<!-- Все ссылки ведут на партнёрский URL, открываются в новой вкладке -->
+<!-- При клике на баннер, картинку, кнопку — переход на affiliate -->
+</body>
+</html>
