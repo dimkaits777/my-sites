@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мои сайты-прокладки | Портфолио</title>
-    <meta name="description" content="Коллекция одностраничных сайтов-прокладок для партнёрских программ.">
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,7 +14,7 @@
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f9 100%);
+            background: linear-gradient(145deg, #f0f5fa 0%, #e6eef8 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,13 +23,13 @@
             padding: 20px;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            box-shadow: 0 30px 60px -20px rgba(0,30,60,0.3);
             padding: 40px 40px 50px;
             border: 1px solid rgba(255,255,255,0.5);
         }
@@ -38,7 +37,7 @@
             font-size: 3rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #0f2b3d, #1f4b6e);
+            background: linear-gradient(145deg, #0b2b44, #1f5375);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -48,18 +47,18 @@
             gap: 15px;
         }
         h1 i {
-            background: #1f4b6e;
+            background: #1f5375;
             color: white;
             padding: 15px;
             border-radius: 30px;
             font-size: 1.8rem;
-            box-shadow: 0 10px 20px -8px #1f4b6e;
+            box-shadow: 0 12px 24px -10px #1f5375;
         }
         .subhead {
             font-size: 1.2rem;
-            color: #4a5f73;
+            color: #3a5a78;
             margin-bottom: 40px;
-            border-left: 4px solid #ffb347;
+            border-left: 4px solid #ffaa3a;
             padding-left: 20px;
         }
         .stats {
@@ -72,41 +71,41 @@
             background: white;
             padding: 15px 30px;
             border-radius: 60px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 16px rgba(0,20,40,0.05);
             display: flex;
             align-items: center;
             gap: 12px;
             font-weight: 600;
-            border: 1px solid #e2ecf5;
+            border: 1px solid #cde0f0;
         }
         .stat-item i {
-            color: #ffb347;
+            color: #ffaa3a;
             font-size: 1.4rem;
         }
         .site-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
             margin-bottom: 50px;
         }
         .site-card {
             background: white;
-            border-radius: 28px;
+            border-radius: 32px;
             padding: 24px;
-            box-shadow: 0 8px 24px rgba(0, 40, 60, 0.08);
-            transition: all 0.2s ease;
-            border: 1px solid rgba(224, 238, 251, 0.8);
+            box-shadow: 0 12px 28px -10px rgba(20,50,80,0.15);
+            transition: all 0.25s ease;
+            border: 1px solid #dae9f5;
             display: flex;
             flex-direction: column;
         }
         .site-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -10px rgba(31, 75, 110, 0.2);
-            border-color: #b8d1e5;
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px #1f5375b0;
+            border-color: #9bc2de;
         }
         .card-icon {
             font-size: 2.2rem;
-            background: #e5f0fb;
+            background: #e2effb;
             width: 60px;
             height: 60px;
             display: flex;
@@ -114,21 +113,21 @@
             justify-content: center;
             border-radius: 20px;
             margin-bottom: 20px;
-            color: #1f4b6e;
+            color: #1f5375;
         }
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 6px;
-            color: #0b2a3c;
+            margin-bottom: 8px;
+            color: #0b2b44;
         }
         .card-filename {
             font-family: 'SF Mono', 'Fira Code', monospace;
             font-size: 0.8rem;
-            background: #f0f6fd;
+            background: #e8f0f8;
             padding: 4px 12px;
             border-radius: 30px;
-            color: #1f4b6e;
+            color: #1f5375;
             display: inline-block;
             margin-bottom: 16px;
             letter-spacing: -0.2px;
@@ -138,7 +137,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #1f4b6e;
+            background: #1f5375;
             color: white;
             padding: 12px 20px;
             border-radius: 50px;
@@ -146,55 +145,23 @@
             font-weight: 600;
             transition: background 0.2s, gap 0.2s;
             border: none;
-            cursor: pointer;
             width: fit-content;
         }
         .card-link i {
             font-size: 0.9rem;
         }
         .card-link:hover {
-            background: #0f3857;
+            background: #0f3c58;
             gap: 15px;
-        }
-        .instruction {
-            background: #fef9ec;
-            border-radius: 30px;
-            padding: 30px 35px;
-            border: 1px solid #ffe5b4;
-            margin-top: 20px;
-        }
-        .instruction h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #8a5a2a;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .instruction ol {
-            padding-left: 25px;
-            font-size: 1.1rem;
-            color: #3f3a2b;
-        }
-        .instruction li {
-            margin: 10px 0;
-        }
-        .instruction code {
-            background: #fff3d6;
-            padding: 3px 8px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #b16100;
         }
         .footer {
             margin-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #5d7184;
+            color: #4f6f8a;
             font-size: 0.9rem;
-            border-top: 1px dashed #bdd3e8;
+            border-top: 1px dashed #b3cfeb;
             padding-top: 30px;
             flex-wrap: wrap;
             gap: 20px;
@@ -203,7 +170,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: #0d2b3e;
+            background: #0b2b44;
             color: white;
             padding: 8px 18px;
             border-radius: 40px;
@@ -212,7 +179,7 @@
             transition: background 0.2s;
         }
         .github-link:hover {
-            background: #1f4b6e;
+            background: #1f5375;
         }
         @media (max-width: 600px) {
             .container { padding: 25px; margin: 20px auto; }
@@ -228,7 +195,7 @@
             Мои сайты-прокладки
         </h1>
         <div class="subhead">
-            Коллекция лендингов для партнёрских программ · Все файлы в репозитории
+            Коллекция лендингов для партнёрских программ · 5 проектов
         </div>
 
         <!-- Статистика -->
@@ -238,81 +205,71 @@
             <div class="stat-item"><i class="fas fa-rocket"></i> 2026 collection</div>
         </div>
 
-        <!-- Сетка карточек сайтов -->
+        <!-- Сетка карточек сайтов (все твои проекты) -->
         <div class="site-grid">
-            <!-- 3D Flowers -->
+            <!-- 1. 3D Flowers -->
             <div class="site-card">
                 <div class="card-icon"><i class="fas fa-seedling"></i></div>
                 <div class="card-title">3D Flowers</div>
                 <div class="card-filename">3d-flowers.html</div>
-                <div style="flex:1; color:#4a6e85; margin-bottom: 16px;">Бумажные цветы, объёмные SVG-наборы</div>
+                <div style="flex:1; color:#3a627c; margin-bottom: 16px;">Бумажные цветы, объёмные SVG-наборы</div>
                 <a href="3d-flowers.html" target="_blank" class="card-link">
                     Открыть <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- Тестовый сайт (шрифты) -->
+            <!-- 2. Тестовый сайт (шрифты) – старый тестовый файл -->
             <div class="site-card">
                 <div class="card-icon"><i class="fas fa-font"></i></div>
                 <div class="card-title">Тестовый сайт (шрифты)</div>
                 <div class="card-filename">deepseek_html_20260223_9c8c27.html</div>
-                <div style="flex:1; color:#4a6e85; margin-bottom: 16px;">Коллекция шрифтов (первый тест)</div>
+                <div style="flex:1; color:#3a627c; margin-bottom: 16px;">Коллекция шрифтов (первый тест)</div>
                 <a href="deepseek_html_20260223_9c8c27.html" target="_blank" class="card-link">
                     Открыть <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- Бумажные цветы 2026 -->
+            <!-- 3. Бумажные цветы 2026 -->
             <div class="site-card">
                 <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                 <div class="card-title">Бумажные цветы 2026</div>
                 <div class="card-filename">flowers2026.html</div>
-                <div style="flex:1; color:#4a6e85; margin-bottom: 16px;">Свежая подборка 2026 года</div>
+                <div style="flex:1; color:#3a627c; margin-bottom: 16px;">Свежая подборка 2026 года</div>
                 <a href="flowers2026.html" target="_blank" class="card-link">
                     Открыть <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- 3D Paper Flowers Collection -->
+            <!-- 4. 3D Paper Flowers Collection -->
             <div class="site-card">
                 <div class="card-icon"><i class="fas fa-flower"></i></div>
-                <div class="card-title">3D Paper Flowers Collection</div>
+                <div class="card-title">3D Paper Flowers</div>
                 <div class="card-filename">flowers33.html</div>
-                <div style="flex:1; color:#4a6e85; margin-bottom: 16px;">Большая коллекция объёмных цветов</div>
+                <div style="flex:1; color:#3a627c; margin-bottom: 16px;">Большая коллекция объёмных цветов</div>
                 <a href="flowers33.html" target="_blank" class="card-link">
                     Открыть <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
 
-            <!-- Sans Serif Fonts (переименован для красоты, но если файл с пробелом - замените ссылку) -->
+            <!-- 5. Sans Serif Fonts (НОВЫЙ САЙТ) -->
             <div class="site-card">
                 <div class="card-icon"><i class="fas fa-text-height"></i></div>
                 <div class="card-title">Sans Serif Fonts</div>
-                <div class="card-filename">sans-serif-fonts.html (или с пробелом)</div>
-                <div style="flex:1; color:#4a6e85; margin-bottom: 16px;">Бесплатные шрифты с лицензией</div>
+                <div class="card-filename">sans-serif-fonts.html</div>
+                <div style="flex:1; color:#3a627c; margin-bottom: 16px;">Бесплатные шрифты с коммерческой лицензией</div>
                 <a href="sans-serif-fonts.html" target="_blank" class="card-link">
                     Открыть <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Блок инструкции -->
-        <div class="instruction">
-            <h3><i class="fas fa-plus-circle" style="color:#f5a623;"></i> Как добавить новый сайт</h3>
-            <ol>
-                <li><strong>Загрузите</strong> новый HTML-файл в корень репозитория (через интерфейс GitHub или git push).</li>
-                <li><strong>Отредактируйте</strong> этот файл <code>index.html</code> — добавьте карточку в сетку по образцу выше.</li>
-                <li>Не забудьте увеличить счётчик в блоке <code class="stats">Всего сайтов</code>.</li>
-                <li><strong>Сохраните изменения</strong> (commit). Через минуту новый сайт появится на главной.</li>
-            </ol>
-            <p style="margin-top: 20px; background: #ffe9c7; padding: 10px 15px; border-radius: 40px;">
-                <i class="fas fa-lightbulb" style="color:#f5a623;"></i> 
-                Для файла с пробелами используйте в ссылке <code>%20</code> вместо пробела, либо переименуйте файл (рекомендуется). 
-                Например: <code>Sans%20Serif%20Fonts.html</code>.
-            </p>
+        <!-- Инструкция (по желанию) -->
+        <div style="background: #fef7e7; border-radius: 30px; padding: 20px 25px; border-left: 6px solid #ffaa3a; margin-top: 20px;">
+            <h3 style="display: flex; align-items: center; gap: 8px; color:#8a5a2a;"><i class="fas fa-lightbulb"></i> Как добавить новый сайт</h3>
+            <p style="margin: 10px 0 0 30px; color: #3f3a2b;">Загрузи HTML-файл в репозиторий, затем добавь карточку в этот список по образцу. После коммита сайт появится на главной.</p>
         </div>
 
-        <!-- Футер со ссылкой на репозиторий -->
+        <!-- Футер -->
         <div class="footer">
             <span><i class="far fa-copyright"></i> 2026 · Партнёрские сайты</span>
             <a href="https://github.com/dimgkait777/my-sites" target="_blank" class="github-link">
@@ -320,18 +277,5 @@
             </a>
         </div>
     </div>
-
-    <!-- Небольшой скрипт для динамического подсчёта (опционально) -->
-    <script>
-        // Можно автоматически подсчитать количество карточек, но оставим ручное управление
-        // просто для информации
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.site-card').length;
-            const statNumber = document.querySelector('.stat-item strong');
-            if (statNumber) {
-                // statNumber.textContent = cards; // если доверяем количеству карточек
-            }
-        });
-    </script>
 </body>
 </html>
