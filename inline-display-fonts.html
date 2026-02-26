@@ -55,50 +55,15 @@
             object-fit: cover;
             pointer-events: none; /* чтобы клики уходили в ссылку */
         }
-        .hero-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            background: rgba(0, 0, 0, 0.3); /* легкое затемнение для читаемости */
-            backdrop-filter: blur(2px);
-            padding: 20px;
-        }
-        .hero-content h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 900;
-            line-height: 1.1;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .hero-content .free {
-            background: #ff4d4d;
-            color: white;
-            padding: 0.2em 0.6em;
-            border-radius: 60px;
-            display: inline-block;
-            font-size: 0.6em;
-            margin-left: 15px;
-            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
-            text-transform: uppercase;
-        }
-        .hero-content p {
-            font-size: 1.4rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-weight: 400;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
+
+        /* Кнопка поверх видео */
         .hero-cta {
-            margin-top: 35px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            margin: 0;
         }
         .hero-cta .btn {
             background: #ff4d4d;
@@ -253,11 +218,9 @@
             .hero {
                 height: 500px;
             }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .hero-content p {
-                font-size: 1.2rem;
+            .hero-cta .btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
             }
             .section-header {
                 flex-direction: column;
@@ -274,18 +237,16 @@
 
     <!-- HERO BANNER -->
     <div class="hero">
-        <!-- кликабельная ссылка на видео -->
         <a href="https://www.creativefabrica.com/search/ref/20469587/?query=inline%20display%20fonts" target="_blank" rel="noopener nofollow" class="hero-video-link">
             <video autoplay loop muted playsinline>
                 <source src="video/inline-display-fonts.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </a>
-            <div class="hero-cta">
-                <a href="https://www.creativefabrica.com/search/ref/20469587/?query=inline%20display%20fonts" target="_blank" rel="noopener nofollow" class="btn">
-                    <i class="fas fa-download"></i> DOWNLOAD FREE
-                </a>
-            </div>
+        <div class="hero-cta">
+            <a href="https://www.creativefabrica.com/search/ref/20469587/?query=inline%20display%20fonts" target="_blank" rel="noopener nofollow" class="btn">
+                <i class="fas fa-download"></i> DOWNLOAD FREE
+            </a>
         </div>
     </div>
 
