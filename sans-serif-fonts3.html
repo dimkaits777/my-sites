@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sans Serif Fonts 2026 · free collection</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a2634;
+            line-height: 1.5;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Hero banner (with background image) --- */
+        .hero {
+            background: linear-gradient(rgba(10, 38, 71, 0.75), rgba(27, 59, 92, 0.75)), url('images/hero-banner2') no-repeat center center / cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 35px -8px rgba(0,40,60,0.3);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.8rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .hero .free {
+            background: #ffb347;
+            color: #0a2647;
+            padding: 0 20px;
+            border-radius: 60px;
+            display: inline-block;
+            font-size: 0.6em;
+            margin-left: 15px;
+            box-shadow: 0 5px 15px rgba(255,180,70,0.4);
+        }
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-weight: 400;
+        }
+        .hero-cta {
+            margin-top: 35px;
+        }
+        .hero-cta .btn {
+            background: white;
+            color: #0a2647;
+            padding: 16px 45px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.3);
+            border: none;
+        }
+        .hero-cta .btn i {
+            font-size: 1.2rem;
+        }
+        .hero-cta .btn:hover {
+            background: #ffb347;
+            transform: scale(1.02);
+        }
+
+        /* --- Section header --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-left: 6px solid #1f4b8a;
+            padding-left: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .section-header h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        .section-header p {
+            color: #4b6589;
+            font-size: 1.2rem;
+        }
+        .section-header .count {
+            background: #eef4ff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1f4b8a;
+        }
+
+        /* --- Font grid --- */
+        .font-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .font-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0,20,40,0.12);
+            transition: transform 0.25s, box-shadow 0.3s;
+            border: 1px solid #e5f0fc;
+            display: flex;
+            flex-direction: column;
+        }
+        .font-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 40px -12px #1f4b8ab0;
+        }
+        .card-img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #f2f7ff;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .font-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        .card-content {
+            padding: 24px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            color: #0a2647;
+        }
+        .card-desc {
+            color: #3a5370;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-btn {
+            background: #ff8c42;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.2s, gap 0.2s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 14px rgba(255,140,66,0.3);
+        }
+        .card-btn i {
+            font-size: 1rem;
+        }
+        .card-btn:hover {
+            background: #e6752e;
+            gap: 16px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #0a1a2b;
+            color: #90a9c2;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            margin-top: 50px;
+        }
+        .footer a {
+            color: #ffb347;
+            font-weight: 600;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 700px) {
+            .hero { padding: 70px 15px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .free { font-size: 0.5em; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .section-header h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero banner (clickable CTA button only) -->
+    <div class="hero">
+        <div class="container">
+            <h1>
+                Sans Serif Fonts 2026
+                <span class="free">FREE</span>
+            </h1>
+            <p>Commercial licence · Instant download · Updated 2026</p>
+            <div class="hero-cta">
+                <a href="https://www.creativefabrica.com/search/?query=Sans%20Serif%20Fonts" target="_blank" rel="noopener nofollow" class="btn">
+                    <i class="fas fa-download"></i> GRAB FREE ACCESS
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <h2>🔥 Best free Sans Serif Fonts 2026</h2>
+                <p>Hand‑picked for designers & creators</p>
+            </div>
+            <div class="count" id="fontCount">loading...</div>
+        </div>
+
+        <!-- Grid will be populated via JavaScript -->
+        <div class="font-grid" id="fontGrid"></div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Sans Serif Fonts Collection · All rights reserved · <a href="https://www.creativefabrica.com/search/?query=Sans%20Serif%20Fonts" target="_blank">Affiliate partner</a></p>
+    </footer>
+
+    <script>
+        (function() {
+            // ---------- DATA FROM TABLE (exactly as provided) ----------
+            const fonts = [
+                {
+                    name: "Positive Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Positive font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/23/Positive-Fonts-140748063-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/positive-16/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Donna Font by moonlight craft · Creative Fabrica",
+                    description: "Click here and download the Donna font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/22/Donna-Fonts-118568606-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/donna-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Vagist Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Vagist font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/11/15/Vagist-Fonts-109950412-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/vagist/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Grinch Font by jinanstd · Creative Fabrica",
+                    description: "Click here and download the Grinch font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/12/22/Grinch-Fonts-138426404-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/grinch-69/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Authortunes Rounded Font by Nan Design · Creative Fabrica",
+                    description: "Click here and download the Authortunes Rounded font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/08/03/Authortunes-Rounded-Fonts-127556330-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/authortunes-rounded/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Floro De Madre Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Floro De Madre font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/07/Floro-De-Madre-Fonts-99193574-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/floro-de-madre/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Summer Tools Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Summer Tools font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/08/16/Summer-Tools-Fonts-103988944-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/summer-tools/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Mezzano Font by Surplus Type Co. · Creative Fabrica",
+                    description: "Click here and download the Mezzano font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/11/29/Mezzano-Fonts-85324241-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/mezzano/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Home-cooked and Sanister Duo Font",
+                    description: "Click here and download the Home-cooked and Sanister Duo font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/09/10/Homecooked-and-Sanister-Duo-Fonts-130456789-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/home-cooked-and-sanister-duo/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "The Handled Font by gatype · Creative Fabrica",
+                    description: "Click here and download the The Handled font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/25/The-Handled-Fonts-143205741-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/the-handled/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Catitude Serif Font by greenvill · Creative Fabrica",
+                    description: "Click here and download the Catitude Serif font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/22/Catitude-Serif-Fonts-143003978-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/catitude-serif/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Spooky Dreams Regular Font by Letterayu · Creative Fabrica",
+                    description: "Click here and download the Spooky Dreams Regular font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/26/SpookyDreams-Regular-Fonts-127008339-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/spooky-dreams-regular/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Ligatures Font by Preketek texs · Creative Fabrica",
+                    description: "Click here and download the Ligatures font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/01/Ligatures-Fonts-125258689-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/ligatures/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Magfin Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Magfin font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/05/29/Magfin-Fonts-123118332-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/magfin/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Malishka Font by HipFonts · Creative Fabrica",
+                    description: "Click here and download the Malishka font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/01/08/Malishka-Fonts-113437942-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/malishka/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Kenzoestic Rounded Font by Nan Design · Creative Fabrica",
+                    description: "Click here and download the Kenzoestic Rounded font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/22/Kenzoestic-Rounded-Fonts-126702508-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/kenzoestic-rounded/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Toon Summer Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Toon Summer font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/08/16/Toon-Summer-Fonts-103989398-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/toon-summer/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Zp Mullah Fn Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Zp Mullah Fn font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/29/Zp-mullah-fn-Fonts-127247521-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/zp-mullah-fn/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Thinking Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Thinking font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/16/Thinking-Fonts-93409126-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/thinking-50/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Hello Kids Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Hello Kids font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/25/Hello-Kids-Fonts-94106333-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/hello-kids-10/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Folksy Violet Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Folksy Violet font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/04/26/Folksy-Violet-Fonts-96273304-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/folksy-violet/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Honeybelle Font by IngingDigitalArt · Creative Fabrica",
+                    description: "Click here and download the Honeybelle font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/08/15/Honeybelle-Fonts-128509359-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/honeybelle/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Avero Font by Wow Magic · Creative Fabrica",
+                    description: "Click here and download the Avero font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/12/17/Avero-Fonts-138071558-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/avero/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Emoticat Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Emoticat font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/08/16/Emoticat-Fonts-103989783-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/emoticat/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Just a Simple Note Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Just a Simple Note font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/07/Just-a-Simple-Note-Fonts-99193306-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/just-a-simple-note/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Moliga Font by pandekastudio · Creative Fabrica",
+                    description: "Click here and download the Moliga font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/07/Moliga-Fonts-99194834-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/moliga/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Honey Bunny Typeface Pack Bundle · Creative Fabrica",
+                    description: "Click here and download the Honey Bunny Typeface Pack bundle · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/16/Honey-Bunny-Typeface-Pack-Bundles-fb-142548263-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/honey-bunny-typeface-pack/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Rounce Font by IqsiartStudio · Creative Fabrica",
+                    description: "Click here and download the Rounce font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/05/14/Rounce-Fonts-122051824-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/rounce/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Best Mom Ever Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Best Mom Ever font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/06/07/Best-Mom-Ever-Fonts-99193534-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/best-mom-ever-1488/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Moste Font by Marvadesign · Creative Fabrica",
+                    description: "Click here and download the Moste font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/04/Moste-Fonts-141687638-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/moste-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Renger Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Renger font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/11/16/Renger-Fonts-110005355-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/renger/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Viagiot Font by Denustudios · Creative Fabrica",
+                    description: "Click here and download the Viagiot font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/11/12/Viagiot-Fonts-109735882-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/viagiot-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Plum Font by ABC Font · Creative Fabrica",
+                    description: "Click here and download the Plum font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/21/Plum-Fonts-142941485-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/plum-20/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Gimick Font by Graphicxell · Creative Fabrica",
+                    description: "Click here and download the Gimick font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/06/Gimick-Fonts-117397223-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/gimick/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "The Royals Queen Font by saemooncreative · Creative Fabrica",
+                    description: "Click here and download the The Royals Queen font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/07/The-Royals-Queen-Fonts-125653239-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/the-royals-queen/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Father Day Font by Bee piyanuch · Creative Fabrica",
+                    description: "Click here and download the Father Day font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/08/11/Father-Day-Fonts-103657845-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/father-day-33/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Minerva Font by vladfedotovv · Creative Fabrica",
+                    description: "Click here and download the Minerva font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/22/Minerva-Fonts-140668338-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/minerva-5/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Sweet Escape Font by CraftedType Studio · Creative Fabrica",
+                    description: "Click here and download the Sweet Escape font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/12/29/Sweet-Escape-Fonts-112815719-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/sweet-escape/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Zone Songeda Font by alonkelakon · Creative Fabrica",
+                    description: "Click here and download the Zone Songeda font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/21/Zone-Songeda-Fonts-118464569-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/zone-songeda/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Camera Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Camera font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/02/01/Camera-Fonts-115080892-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/camera-364/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Fox Damian Font by Fox7 · Creative Fabrica",
+                    description: "Click here and download the Fox Damian font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/10/03/Fox-Damian-Fonts-132247884-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/fox-damian/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Smile Girly Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Smile Girly font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/16/Smile-Girly-Fonts-93408808-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/smile-girly/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Darkorange Font by ABC Font · Creative Fabrica",
+                    description: "Click here and download the Darkorange font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/21/DarkOrange-Fonts-142941970-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/darkorange/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Mocha Smile Font by Typefar · Creative Fabrica",
+                    description: "Click here and download the Mocha Smile font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/17/Mocha-Smile-Fonts-142605664-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/mocha-smile/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Beautiful Blessings Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Beautiful Blessings font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/11/17/Beautiful-Blessings-Fonts-84286053-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/beautiful-blessings/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Candy Bar Font by Mightyfire · Creative Fabrica",
+                    description: "Click here and download the Candy Bar font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/05/03/Candy-Bar-Fonts-96801988-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/candy-bar-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Aziley Font by moonlight craft · Creative Fabrica",
+                    description: "Click here and download the Aziley font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/22/Aziley-Fonts-118567857-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/aziley/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Modern Vintage Font by HENGKIPRAMUDI · Creative Fabrica",
+                    description: "Click here and download the Modern Vintage font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/17/Modern-Vintage-Fonts-140273816-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/modern-vintage-6/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Daily Planner Font by CraftedType Studio · Creative Fabrica",
+                    description: "Click here and download the Daily Planner font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/01/20/Daily-Planner-Fonts-114247332-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/daily-planner-344/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Mavelo Sans Font by letterhend · Creative Fabrica",
+                    description: "Click here and download the Mavelo Sans font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/11/25/Mavelo-Sans-Fonts-136272803-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/mavelo-sans/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Peachpuff Font by ABC Font · Creative Fabrica",
+                    description: "Click here and download the Peachpuff font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/21/PeachPuff-Fonts-142941440-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/peachpuff/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Hefuma Font by twinletter · Creative Fabrica",
+                    description: "Click here and download the Hefuma font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/09/05/Hefuma-Fonts-78545455-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/hefuma/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Solnechka Font by HipFonts · Creative Fabrica",
+                    description: "Click here and download the Solnechka font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/02/10/Solnechka-Fonts-115691429-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/solnechka/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Gomes Dorce Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Gomes Dorce font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/12/04/Gomes-Dorce-Fonts-111282172-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/gomes-dorce/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Emotions Condensed Font by 177Studio · Creative Fabrica",
+                    description: "Click here and download the Emotions Condensed font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/08/08/Emotions-Condensed-Fonts-76426763-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/emotions-condensed/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Kapok Font by Artiveko · Creative Fabrica",
+                    description: "Click here and download the Kapok font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/02/Kapok-Fonts-125283490-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/kapok/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Aspen Font by moonlight craft · Creative Fabrica",
+                    description: "Click here and download the Aspen font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/22/Aspen-Fonts-118567262-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/aspen-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Coinup Font by Twistystd · Creative Fabrica",
+                    description: "Click here and download the Coinup font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/14/Coinup-Fonts-140046993-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/coinup/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Raffas Font by Flawless And Co · Creative Fabrica",
+                    description: "Click here and download the Raffas font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/14/Raffas-Fonts-140029741-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/raffas/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Wonderfull Font by OliviaFontCo · Creative Fabrica",
+                    description: "Click here and download the Wonderfull font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/11/Wonderfull-Fonts-139823954-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/wonderfull-18/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Lemori Font by Paperjamlab · Creative Fabrica",
+                    description: "Click here and download the Lemori font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/12/Lemori-Fonts-142315225-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/lemori/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Burger Font by Abodaniel · Creative Fabrica",
+                    description: "Click here and download the Burger font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/09/08/Burger-Fonts-130309360-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/burger-52/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Maling Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Maling font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/14/Maling-Fonts-140083737-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/maling/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Nincaberry Scary Duo Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Nincaberry Scary Duo font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/10/14/Nincaberry-Scary-Duo-Fonts-133116062-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/nincaberry-scary-duo/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Kiss the Girl Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Kiss the Girl font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2023/08/14/Kiss-the-Girl-Fonts-76855791-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/kiss-the-girl/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Blackpaper Font by OliviaFontCo · Creative Fabrica",
+                    description: "Click here and download the Blackpaper font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/20/Blackpaper-Fonts-142838898-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/blackpaper-5/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Rashinka Font by alonkelakon · Creative Fabrica",
+                    description: "Click here and download the Rashinka font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/02/01/RASHINKA-Fonts-89941955-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/rashinka/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Rook Castle Font by roomspace · Creative Fabrica",
+                    description: "Click here and download the Rook Castle font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/10/04/Rook-Castle-Fonts-132345989-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/rook-castle/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "April Rhapsody Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the April Rhapsody font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/04/26/April-Rhapsody-Fonts-96273405-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/april-rhapsody/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Rush Slab Font by JNJ studio · Creative Fabrica",
+                    description: "Click here and download the Rush Slab font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/06/11/Rush-Slab-Fonts-123898265-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/rush-slab/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Belongfind Font by Shakira Studio · Creative Fabrica",
+                    description: "Click here and download the Belongfind font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/02/03/BelongFind-Fonts-115228831-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/belongfind/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Shines Cintely Font by Situjuh · Creative Fabrica",
+                    description: "Click here and download the Shines Cintely font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/06/18/Shines-Cintely-Fonts-124377630-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/shines-cintely/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Merry Harmony Font by product.rasiostudio · Creative Fabrica",
+                    description: "Click here and download the Merry Harmony font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/20/Merry-Harmony-Fonts-142837594-1-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/merry-harmony/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Romantic Handmade Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Romantic Handmade font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/17/Romantic-Handmade-Fonts-93482261-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/romantic-handmade/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Avenza Regular Font by InkwellTypeCo · Creative Fabrica",
+                    description: "Click here and download the Avenza Regular font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/31/Avenza-Regular-Fonts-127370071-1-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/avenza-regular/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Murisa Fiasco Font by murisa.studio · Creative Fabrica",
+                    description: "Click here and download the Murisa Fiasco font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/10/07/Murisa-Fiasco-Fonts-132553747-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/murisa-fiasco/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Citrusbite Rounded Font by Nan Design · Creative Fabrica",
+                    description: "Click here and download the Citrusbite Rounded font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/08/15/Citrusbite-Rounded-Fonts-128524313-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/citrusbite-rounded/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Ontime Font by Inermedia STUDIO · Creative Fabrica",
+                    description: "Click here and download the Ontime font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/16/Ontime-Fonts-93408831-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/ontime-20/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Springberry Font by Illustration Ink · Creative Fabrica",
+                    description: "Click here and download the Springberry font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/04/04/Springberry-Fonts-119325792-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/springberry/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Humbler Sans Font by Situjuh · Creative Fabrica",
+                    description: "Click here and download the Humbler Sans font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2024/03/08/Humbler-Sans-Fonts-92789434-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/humbler-sans/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Romita Font by Creative Fabrica Fonts · Creative Fabrica",
+                    description: "Click here and download the Romita font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/07/02/Romita-Fonts-125338659-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/romita/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Groovify Font by vladfedotovv · Creative Fabrica",
+                    description: "Click here and download the Groovify font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/29/Groovify-Fonts-141212597-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/groovify-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Farmhouse Beautiful Font by Reyna Studio · Creative Fabrica",
+                    description: "Click here and download the Farmhouse Beautiful font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/08/13/Farmhouse-Beautiful-Fonts-128386277-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/farmhouse-beautiful-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Charming October Font by CraftedType Studio · Creative Fabrica",
+                    description: "Click here and download the Charming October font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/05/29/Charming-October-Fonts-123086308-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/charming-october/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Sans Serif Bundle Collection Font by Mahesans Co · Creative Fabrica",
+                    description: "Click here and download the Sans Serif Bundle Collection font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/09/30/Sans-Serif-Bundle-Collection-Fonts-131986253-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/sans-serif-bundle-collection/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Ruciness Font by Dikas Studio · Creative Fabrica",
+                    description: "Click here and download the Ruciness font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/08/Ruciness-Fonts-139593198-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/ruciness/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Repost Font by Dito (7NTypes) · Creative Fabrica",
+                    description: "Click here and download the Repost font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/02/13/Repost-Fonts-140731078.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/repost-2/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Milgan Font by Perfectype · Creative Fabrica",
+                    description: "Click here and download the Milgan font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2026/01/14/Milgan-Fonts-140083683-1.jpg",
+                    affiliate_url: "https://www.creativefabrica.com/product/milgan/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Kubots Font by nimatype · Creative Fabrica",
+                    description: "Click here and download the Kubots font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2022/08/23/Kubots-Fonts-36859258-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/kubots/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Quirky Punch Font by Rvandtype · Creative Fabrica",
+                    description: "Click here and download the Quirky Punch font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/03/27/Quirky-Punch-Fonts-118882614-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/quirky-punch/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                },
+                {
+                    name: "Smoothie Font by Creatype Designer · Creative Fabrica",
+                    description: "Click here and download the Smoothie font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                    image_url: "https://www.creativefabrica.com/wp-content/uploads/2025/10/18/Smoothie-Fonts-133438917-1.png",
+                    affiliate_url: "https://www.creativefabrica.com/product/smoothie-24/ref/20531415/",
+                    button: "CLICK HERE AND DOWNLOAD"
+                }
+            ];
+
+            // Helper: clean name (remove "by ..." part)
+            function cleanName(fullName) {
+                return fullName.replace(/ by .*$/, '').replace(/ · Creative Fabrica.*$/, '').trim();
+            }
+
+            // Render cards
+            const grid = document.getElementById('fontGrid');
+            const countSpan = document.getElementById('fontCount');
+
+            if (grid) {
+                fonts.forEach(f => {
+                    const card = document.createElement('div');
+                    card.className = 'font-card';
+
+                    // Image link
+                    const imgLink = document.createElement('a');
+                    imgLink.href = f.affiliate_url;
+                    imgLink.target = '_blank';
+                    imgLink.rel = 'noopener nofollow';
+                    imgLink.className = 'card-img';
+                    const img = document.createElement('img');
+                    img.src = f.image_url;
+                    img.alt = f.name;
+                    img.loading = 'lazy';
+                    img.onerror = () => { img.src = 'https://via.placeholder.com/400x220?text=Font+Preview'; };
+                    imgLink.appendChild(img);
+
+                    // Content
+                    const content = document.createElement('div');
+                    content.className = 'card-content';
+
+                    const title = document.createElement('h3');
+                    title.className = 'card-title';
+                    title.textContent = cleanName(f.name);
+
+                    const desc = document.createElement('p');
+                    desc.className = 'card-desc';
+                    desc.textContent = f.description;
+
+                    const btn = document.createElement('a');
+                    btn.href = f.affiliate_url;
+                    btn.target = '_blank';
+                    btn.rel = 'noopener nofollow';
+                    btn.className = 'card-btn';
+                    btn.innerHTML = `${f.button} <i class="fas fa-arrow-right"></i>`;
+
+                    content.appendChild(title);
+                    content.appendChild(desc);
+                    content.appendChild(btn);
+
+                    card.appendChild(imgLink);
+                    card.appendChild(content);
+                    grid.appendChild(card);
+                });
+            }
+
+            if (countSpan) {
+                countSpan.textContent = fonts.length + ' free fonts';
+            }
+        })();
+    </script>
+</body>
+</html>
