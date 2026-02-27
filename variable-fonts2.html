@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Fonts | Premium Collection 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= VARIABLES & RESET ================= */
+        :root {
+            --global-bg: #030305;
+            --frame-bg: rgba(255, 255, 255, 0.02);
+            --frame-border: rgba(255, 255, 255, 0.05);
+            --text-main: #f0f0f5;
+            --text-muted: #8b8b99;
+            --accent: #a374ff;
+            --accent-glow: rgba(163, 116, 255, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important; /* Скрываем дефолтный курсор для кастомного */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--global-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 2vw; /* Отступы для 'Framed' композиции */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        a { text-decoration: none; }
+
+        /* ================= WEBGL & NOISE ================= */
+        #shader-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .cinematic-noise {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.45;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ================= CUSTOM CURSOR ================= */
+        .cursor {
+            position: fixed;
+            top: 0; left: 0;
+            width: 20px; height: 20px;
+            background: var(--text-main);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background 0.3s;
+        }
+        .cursor.hovering {
+            width: 60px; height: 60px;
+            background: var(--accent);
+            mix-blend-mode: screen;
+            filter: blur(5px);
+        }
+
+        /* ================= FRAMED LAYOUT ================= */
+        .frame {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: var(--frame-bg);
+            border: 1px solid var(--frame-border);
+            border-radius: 40px;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            height: 75vh;
+            min-height: 500px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 40px 40px 0 0;
+            overflow: hidden;
+        }
+
+        .hero-video-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-video-wrapper video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: filter 0.5s;
+        }
+
+        .hero-video-wrapper:hover video {
+            filter: brightness(0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-accent {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #d1d1d6;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* ================= LIQUID GLASS BUTTONS ================= */
+        @property --angle-1 { syntax: "<angle>"; inherits: false; initial-value: -75deg; }
+        @property --angle-2 { syntax: "<angle>"; inherits: false; initial-value: -45deg; }
+
+        .glass-button {
+            background: linear-gradient(-75deg, rgba(255,255,255, 0.05), rgba(255,255,255, 0.15), rgba(255,255,255, 0.05));
+            box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.1), 
+                        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.2), 
+                        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.4), 
+                        0 0 0.1em 0.25em rgba(255, 255, 255, 0.1) inset;
+            backdrop-filter: blur(12px);
+            transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+            border-radius: 9999px;
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            outline: none;
+        }
+
+        .glass-button.hero-btn { font-size: 1.1rem; letter-spacing: 1px; }
+        .glass-button.card-btn { width: 100%; font-size: 0.9rem; margin-top: auto; }
+
+        .glass-button:hover { transform: scale(0.975); backdrop-filter: blur(4px); }
+        .glass-button:active { transform: scale(0.95) rotate3d(1, 0, 0, 15deg); }
+
+        .glass-button::after {
+            content: ''; position: absolute; inset: 0; border-radius: 999px; 
+            width: calc(100% + 2px); height: calc(100% + 2px); top: -1px; left: -1px; padding: 1px; box-sizing: border-box;
+            background: conic-gradient(from var(--angle-1) at 50% 50%, rgba(0,0,0,0.5), rgba(0,0,0,0) 5% 40%, rgba(163, 116, 255,0.4) 50%, rgba(0,0,0,0) 60% 95%, rgba(0,0,0,0.5)), 
+                        linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+            transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1), --angle-1 500ms ease;
+        }
+        .glass-button:hover::after { --angle-1: -125deg; }
+        .glass-button:active::after { --angle-1: -75deg; }
+
+        .button-shine {
+            position: absolute; inset: 0; border-radius: 999px; width: calc(100% - 1px); height: calc(100% - 1px); top: 0.5px; left: 0.5px;
+            background: linear-gradient(var(--angle-2), rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 40% 50%, rgba(255,255,255,0) 55%);
+            mix-blend-mode: screen; pointer-events: none; background-size: 200% 200%; background-position: 0% 50%; background-repeat: no-repeat;
+            transition: background-position 500ms cubic-bezier(0.25, 1, 0.5, 1), --angle-2 500ms cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .glass-button:hover .button-shine { background-position: 25% 50%; }
+        .glass-button:active .button-shine { background-position: 50% 15%; --angle-2: -15deg; }
+
+        .button-text {
+            text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.3);
+            transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 2; position: relative; padding: 16px 32px;
+            display: flex; align-items: center; gap: 10px; font-weight: 600;
+        }
+        .card-btn .button-text { padding: 12px 20px; }
+        .glass-button:hover .button-text { text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.5); }
+
+        /* ================= SECTION CONTENT ================= */
+        .content-section {
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--frame-border);
+            padding-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        /* ================= GRID & CARDS ================= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--frame-border);
+            border-radius: 24px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        box-shadow 0.4s ease, border-color 0.4s ease;
+            
+            /* Scroll Reveal Initial State */
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+
+        /* Scroll Reveal Active State */
+        .card.reveal-active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--frame-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--accent); transition: color 0.3s; }
+        footer a:hover { color: #fff; }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            body { padding: 0; }
+            .frame { border-radius: 0; border: none; }
+            .section-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="shader-canvas"></canvas>
+    <div class="cinematic-noise"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <main class="frame">
+        <section class="hero">
+            <a href="https://www.creativefabrica.com/search/ref/20531415/?query=variable%20fonts&type=Fonts" target="_blank" rel="noopener nofollow" class="hero-video-wrapper hover-target">
+                <video autoplay loop muted playsinline>
+                    <source src="video/variable-fonts2.mp4" type="video/mp4">
+                </video>
+            </a>
+            <div class="hero-content">
+                <span class="hero-accent">Free Assets 2026</span>
+                <h1>Next-Gen<br>Variable Fonts</h1>
+                <p>Commercial licence included ✓ Instant download ✓ Future-ready typography.</p>
+                <a href="https://www.creativefabrica.com/search/ref/20531415/?query=variable%20fonts&type=Fonts" target="_blank" rel="noopener nofollow" class="glass-button hero-btn hover-target">
+                    <div class="button-shine"></div>
+                    <span class="button-text">GRAB FREE ACCESS <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <h2>🔥 Best free Variable Fonts 2026</h2>
+                <a href="https://www.creativefabrica.com/search/ref/20531415/?query=variable%20fonts&type=Fonts" target="_blank" rel="noopener nofollow" class="glass-button hover-target">
+                    <div class="button-shine"></div>
+                    <span class="button-text">EXPLORE ALL FREE</span>
+                </a>
+            </div>
+
+            <div class="grid" id="products-grid"></div>
+        </section>
+
+        <footer>
+            <p>© 2026 Variable Fonts Collection. Crafted with premium aesthetics. <br>
+            <a href="https://www.creativefabrica.com/search/ref/20531415/?query=variable%20fonts&type=Fonts" target="_blank" rel="noopener nofollow" class="hover-target">Affiliate Partner Program</a></p>
+        </footer>
+    </main>
+
+    <script>
+        // 1. DATA ARRAY (Extracted from your table)
+        const productsData = [
+            {
+                name: "Ramal Font by GiaLetter",
+                desc: "Click here and download the Ramal font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2024/02/02/Ramal-Fonts-90043643-1.jpg",
+                link: "https://www.creativefabrica.com/product/ramal/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Perfect Princess Font by Dadiomouse",
+                desc: "Click here and download the Perfect Princess font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2017/10/Perfect-Princess-by-Dadiomouse.png",
+                link: "https://www.creativefabrica.com/product/perfect-princess/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Montreal Font by Umitype",
+                desc: "Click here and download the Montreal font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2025/05/28/Montreal-Fonts-80953732.png",
+                link: "https://www.creativefabrica.com/product/montreal-3/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Hard Code Font by Darman",
+                desc: "Click here and download the Hard Code font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2024/06/26/Hard-Code-Fonts-100475030-1.png",
+                link: "https://www.creativefabrica.com/product/hard-code/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Vintage Oracle Font by HipFonts",
+                desc: "Click here and download the Vintage Oracle font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2024/01/10/Vintage-Oracle-Fonts-88211793-1.jpg",
+                link: "https://www.creativefabrica.com/product/vintage-oracle/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Younghood Memories Font",
+                desc: "Click here and download the Younghood Memories font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2025/08/27/Younghood-Memories-Fonts-129385565-1.png",
+                link: "https://www.creativefabrica.com/product/younghood-memories/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Nordix Font by Glyphonic",
+                desc: "Click here and download the Nordix font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2026/01/13/Nordix-Fonts-139977822-1.png",
+                link: "https://www.creativefabrica.com/product/nordix/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Metal Soup Font by Alit Design",
+                desc: "Click here and download the Metal Soup font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2023/09/01/Metal-Soup-Fonts-78273303-1.jpg",
+                link: "https://www.creativefabrica.com/product/metal-soup/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Rucent Font by SayStudio",
+                desc: "Click here and download the Rucent font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2026/02/25/Rucent-Fonts-143205829-1.png",
+                link: "https://www.creativefabrica.com/product/rucent/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Inter Font by Rezastudio",
+                desc: "Click here and download the Inter font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2024/07/08/Inter-Fonts-101427734-1.jpg",
+                link: "https://www.creativefabrica.com/product/inter/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Saficel Font by Pista Mova",
+                desc: "Click here and download the Saficel font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2024/11/24/Saficel-Fonts-109557623.jpg",
+                link: "https://www.creativefabrica.com/product/saficel/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            },
+            {
+                name: "Hearts Notes Font by FontDuo",
+                desc: "Click here and download the Hearts Notes font · Window, Mac, Linux · Last updated 2026 · Commercial licence included ✓",
+                img: "https://www.creativefabrica.com/wp-content/uploads/2023/01/11/Hearts-Notes-Fonts-57260512-1.jpg",
+                link: "https://www.creativefabrica.com/product/hearts-notes/ref/20531415/",
+                btn: "CLICK HERE AND DOWLOAD"
+            }
+        ];
+
+        // 2. DYNAMIC CARD GENERATION
+        const grid = document.getElementById('products-grid');
+        
+        productsData.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'card reveal'; // Added 'reveal' class for scroll animation
+            
+            card.innerHTML = `
+                <a href="${product.link}" target="_blank" rel="noopener nofollow" class="card-img-wrapper hover-target">
+                    <img src="${product.img}" alt="${product.name}" loading="lazy">
+                </a>
+                <h3 class="card-title">${product.name.split(' by ')[0]}</h3>
+                <p class="card-desc">${product.desc}</p>
+                <a href="${product.link}" target="_blank" rel="noopener nofollow" class="glass-button card-btn hover-target">
+                    <div class="button-shine"></div>
+                    <span class="button-text">${product.btn} <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            `;
+            grid.appendChild(card);
+        });
+
+        // 3. SCROLL REVEAL ANIMATION (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add subtle delay based on index for cascade effect
+                    const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('reveal-active');
+                    }, (index % 3) * 100); // Stagger by 100ms
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // 4. CUSTOM SMOOTH CURSOR
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth trailing
+        function animateCursor() {
+            let distX = mouseX - cursorX;
+            let distY = mouseY - cursorY;
+            cursorX += distX * 0.15;
+            cursorY += distY * 0.15;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor Hover Effects
+        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+
+        // 5. GENERATIVE WEBGL SHADER (Premium Liquid Background)
+        const canvas = document.getElementById('shader-canvas');
+        const gl = canvas.getContext('webgl');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const vsSource = `
+            attribute vec4 aVertexPosition;
+            void main() { gl_Position = aVertexPosition; }
+        `;
+
+        const fsSource = `
+            precision highp float;
+            uniform vec2 u_resolution;
+            uniform float u_time;
+            uniform vec2 u_mouse;
+
+            void main() {
+                vec2 st = gl_FragCoord.xy / u_resolution.xy;
+                // Адаптация координат под соотношение сторон
+                st.x *= u_resolution.x / u_resolution.y;
+
+                // Медленные переливы (Aurora / Liquid effect)
+                vec2 q = vec2(0.);
+                q.x = st.x + 0.5 * sin(u_time * 0.1);
+                q.y = st.y + 0.5 * cos(u_time * 0.15);
+
+                float fluid = sin(q.x * 2.0 + u_time * 0.2) * cos(q.y * 2.0 + u_time * 0.3);
+                
+                // Взаимодействие с мышью (легкое смещение)
+                vec2 mouse = u_mouse / u_resolution.xy;
+                float dist = distance(st, vec2(mouse.x * (u_resolution.x/u_resolution.y), 1.0 - mouse.y));
+                fluid += exp(-dist * 3.0) * 0.5; // Свечение вокруг мыши
+
+                // Темные премиальные тона (Midnight Blue / Deep Purple)
+                vec3 color1 = vec3(0.02, 0.02, 0.04);
+                vec3 color2 = vec3(0.08, 0.05, 0.15);
+                vec3 color3 = vec3(0.05, 0.1, 0.2);
+
+                vec3 finalColor = mix(color1, color2, fluid + 0.5);
+                finalColor = mix(finalColor, color3, sin(u_time * 0.1 + st.x + st.y) * 0.5 + 0.5);
+
+                gl_FragColor = vec4(finalColor, 1.0);
+            }
+        `;
+
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        }
+
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        gl.useProgram(program);
+
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        const positions = [ -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0 ];
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+        const positionLocation = gl.getAttribLocation(program, "aVertexPosition");
+        gl.enableVertexAttribArray(positionLocation);
+        gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+        const timeLocation = gl.getUniformLocation(program, "u_time");
+        const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+        const mouseLocation = gl.getUniformLocation(program, "u_mouse");
+
+        let startTime = Date.now();
+        function render() {
+            gl.uniform1f(timeLocation, (Date.now() - startTime) * 0.001);
+            gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+            gl.uniform2f(mouseLocation, mouseX, mouseY);
+            
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+</body>
+</html>
